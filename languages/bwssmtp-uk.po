@@ -1,0 +1,405 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SMTP by BestWebSoft\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-12 11:55+0300\n"
+"PO-Revision-Date: 2015-02-13 16:55+0300\n"
+"Last-Translator: BestWebSoft <support@bestwebsoft.com>\n"
+"Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ bwssmtp
+#: bws-smtp.php:121
+msgid "requires"
+msgstr "потребує"
+
+# @ bwssmtp
+#: bws-smtp.php:121
+msgid "or higher, that is why it has been deactivated! Please upgrade WordPress and try again."
+msgstr "або вище, ось чому його було деактивовано! Оновіте WordPress та спробуйте ще раз."
+
+# @ bwssmtp
+#: bws-smtp.php:121
+msgid "Back to the WordPress"
+msgstr "Назад на WordPress"
+
+# @ bwssmtp
+#: bws-smtp.php:121
+msgid "Plugins page"
+msgstr "На Сторінку плагінів"
+
+#: bws-smtp.php:176
+#, php-format
+msgid "Settings have been changed. To apply these changes, please click \"%s\" button."
+msgstr "Налаштування були змінені. Щоб зберегти їх, будь ласка, натисніть кнопку \"%s\"."
+
+# @ bwssmtp
+#: bws-smtp.php:176
+#: bws-smtp.php:503
+msgid "Save Changes"
+msgstr "Зберегти зміни"
+
+# @ bwssmtp
+#: bws-smtp.php:197
+#, php-format
+msgid "Email address %s in the field \"%s\" is not valid!"
+msgstr "Невірний email  %s в полі \"%s\" !"
+
+# @ bwssmtp
+#: bws-smtp.php:197
+#: bws-smtp.php:203
+#: bws-smtp.php:370
+#: bws-smtp.php:421
+#: bws-smtp.php:425
+#: bws-smtp.php:426
+msgid "From Email"
+msgstr "Від Email"
+
+# @ bwssmtp
+#: bws-smtp.php:203
+#: bws-smtp.php:210
+#: bws-smtp.php:217
+#: bws-smtp.php:224
+#: bws-smtp.php:238
+#: bws-smtp.php:245
+#, php-format
+msgid "You have not filled the field \"%s\"!"
+msgstr "Ви не заповнили поле \"%s\"!"
+
+# @ bwssmtp
+#: bws-smtp.php:210
+#: bws-smtp.php:431
+#: bws-smtp.php:435
+msgid "From Name"
+msgstr "Від Імені"
+
+# @ bwssmtp
+#: bws-smtp.php:217
+#: bws-smtp.php:370
+#: bws-smtp.php:440
+#: bws-smtp.php:521
+msgid "SMTP Host"
+msgstr "SMTP Хост"
+
+# @ bwssmtp
+#: bws-smtp.php:224
+#: bws-smtp.php:230
+#: bws-smtp.php:449
+#: bws-smtp.php:525
+msgid "SMTP Port"
+msgstr "SMTP Порт"
+
+# @ bwssmtp
+#: bws-smtp.php:230
+#, php-format
+msgid "The field \"%s\" must contain numbers only!"
+msgstr "Поле \"%s\" має містити лише цифри!"
+
+# @ bwssmtp
+#: bws-smtp.php:238
+#: bws-smtp.php:483
+#: bws-smtp.php:538
+msgid "SMTP Username"
+msgstr "SMTP Ім’я користувача"
+
+# @ bwssmtp
+#: bws-smtp.php:245
+#: bws-smtp.php:492
+#: bws-smtp.php:542
+msgid "SMTP Password"
+msgstr "SMTP Пароль"
+
+# @ bwssmtp
+#: bws-smtp.php:267
+msgid "Settings are not saved."
+msgstr "Налаштування не збережено."
+
+# @ bwssmtp
+#: bws-smtp.php:278
+msgid "Settings saved."
+msgstr "Налаштування збережено."
+
+# @ bwssmtp
+#: bws-smtp.php:292
+msgid "You have not entered an email address which you want to send a test email to!"
+msgstr "Ви не вказали email для тестового листа!"
+
+# @ bwssmtp
+#: bws-smtp.php:297
+#, php-format
+msgid "Email address %s is not valid!"
+msgstr "Email %s невірний!"
+
+# @ bwssmtp
+#: bws-smtp.php:323
+#, php-format
+msgid "SMTP by BestWebSoft plugin: Test email to %s"
+msgstr "SMTP плагін від BestWebSoft: Тестовий лист для %s"
+
+# @ bwssmtp
+#: bws-smtp.php:324
+#, php-format
+msgid "Please, do not reply. This is a test email sent via SMTP by BestWebSoft plugin from %s."
+msgstr "Будь ласка, не відповідайте на цей лист. Це тестовий лист, надісланий за допомогою плагіну SMTP від BestWebSoft від %s."
+
+# @ bwssmtp
+#: bws-smtp.php:343
+#, php-format
+msgid "%s: A test email was sent to %s."
+msgstr "%s: Тестовий лист було відправлено %s."
+
+# @ bwssmtp
+#: bws-smtp.php:343
+msgid "Success"
+msgstr "Успіх"
+
+# @ bwssmtp
+#: bws-smtp.php:348
+#, php-format
+msgid "%s: A test email was not sent."
+msgstr "%s: Тестового листа не надіслано."
+
+# @ bwssmtp
+#: bws-smtp.php:348
+msgid "Error"
+msgstr "Помилка"
+
+# @ bwssmtp
+#: bws-smtp.php:370
+#, php-format
+msgid "A problem with email sending may occur, since most servers require domain name match in \"%s\" and \"%s\" fields."
+msgstr "Може виникнути проблема з відправкою пошти, тому що більшість поштових серверів вимагають співпадіння імені домену в полях \"%s\" і \"%s\"."
+
+# @ bwssmtp
+#: bws-smtp.php:377
+#: bws-smtp.php:379
+#: bws-smtp.php:632
+#: bws-smtp.php:643
+msgid "Settings"
+msgstr "Налаштування"
+
+# @ bwssmtp
+#: bws-smtp.php:380
+#: bws-smtp.php:570
+msgid "Send A Test Email"
+msgstr "Надіслати Тестовий Лист"
+
+# @ bwssmtp
+#: bws-smtp.php:381
+#: bws-smtp.php:644
+msgid "FAQ"
+msgstr "FAQ"
+
+# @ bwssmtp
+#: bws-smtp.php:395
+msgid "Settings Status"
+msgstr "Статус Налаштувань"
+
+# @ bwssmtp
+#: bws-smtp.php:399
+msgid "Confirmed"
+msgstr "Підтверджені"
+
+# @ bwssmtp
+#: bws-smtp.php:401
+msgid "Not confirmed"
+msgstr "Не підтверджені"
+
+# @ bwssmtp
+#: bws-smtp.php:402
+#, php-format
+msgid "To confirm the settings, please send a test email, and then click \"%s\" button after successful sending."
+msgstr "Щоб підтвердити налаштування, будь ласка, відправте тестовий лист та клікніть \"%s\" в разі, якщо відправка була успішна."
+
+# @ bessmtp
+# @ bwssmtp
+#: bws-smtp.php:402
+#: bws-smtp.php:551
+msgid "Settings Are Correct"
+msgstr "Налаштування Вірні"
+
+# @ bwssmtp
+#: bws-smtp.php:408
+msgid "Where To Use"
+msgstr "Де Використовувати"
+
+# @ bwssmtp
+#: bws-smtp.php:412
+msgid "Where Selected"
+msgstr "Де Вибрано"
+
+# @ bwssmtp
+#: bws-smtp.php:415
+msgid "Anywhere"
+msgstr "Скрізь"
+
+#: bws-smtp.php:425
+#, php-format
+msgid "Enter an email, which will be used in the message \"%s\" field."
+msgstr "Вкажіть email, що буде використовуватись у повідомленні в полі \"%s\"."
+
+#: bws-smtp.php:426
+#, php-format
+msgid "(Most mail servers can change the email in the \"%s\" field)"
+msgstr "(Більшість поштових серверів можуть змінювати email у повідомленні в полі \"%s\")"
+
+#: bws-smtp.php:435
+#, php-format
+msgid "Enter the name which will be used in the message \"%s\" field."
+msgstr "Вкажіть ім’я, що буде використовуватись у повідомленні в полі \"%s\"."
+
+# @ bwssmtp
+#: bws-smtp.php:444
+msgid "Enter mail server host name or IP address."
+msgstr "Вкажіть ім’я хосту чи IP адресу поштового серверу."
+
+# @ bwssmtp
+#: bws-smtp.php:453
+msgid "Enter the mail server port."
+msgstr "Вкажіть порт поштового серверу."
+
+# @ bwssmtp
+#: bws-smtp.php:454
+msgid "(Most mail servers use port 465)"
+msgstr "(Більшість поштових серверів використовують 465 порт)"
+
+# @ bwssmtp
+#: bws-smtp.php:458
+#: bws-smtp.php:529
+msgid "SMTP Secure Connection"
+msgstr "SMTP Захищене З’єднання"
+
+# @ bwssmtp
+#: bws-smtp.php:461
+msgid "None"
+msgstr "Відсутнє"
+
+# @ bwssmtp
+#: bws-smtp.php:464
+msgid "SSL"
+msgstr "SSL"
+
+# @ bwssmtp
+#: bws-smtp.php:467
+msgid "TLS"
+msgstr "TLS"
+
+# @ bwssmtp
+#: bws-smtp.php:469
+msgid "Select the type of secure connection with the mail server."
+msgstr "Виберіть тип захищеного з’єднання з поштовим сервером."
+
+# @ bwssmtp
+#: bws-smtp.php:470
+msgid "(Most mail servers use SSL connection)"
+msgstr "(Більшість поштових серверів використовують SSL з'єднання)"
+
+# @ bwssmtp
+#: bws-smtp.php:474
+#: bws-smtp.php:533
+msgid "SMTP Authentication"
+msgstr "SMTP Аутентифікація"
+
+# @ bwssmtp
+#: bws-smtp.php:477
+msgid "Mark the checkbox if authentication is required on the mail server."
+msgstr "Відмітьте, якщо поштовий сервер вимагає аутентифікаціі."
+
+# @ bwssmtp
+#: bws-smtp.php:478
+msgid "(Most mail servers require entering username and password)"
+msgstr "(Більшість поштових серверів вимагають введення імені користувача і пароля)"
+
+# @ bwssmtp
+#: bws-smtp.php:487
+msgid "Enter the username for authentication on the mail server."
+msgstr "Введіть ім’я користувача для аутентифікаціі на поштовому сервері."
+
+# @ bwssmtp
+#: bws-smtp.php:496
+msgid "Enter the password for authentication on the mail server."
+msgstr "Введіть пароль для аутентифікаціі на поштовому сервері."
+
+# @ bwssmtp
+#: bws-smtp.php:511
+msgid "Current Settings"
+msgstr "Поточні Налаштування"
+
+# @ bwssmtp
+#: bws-smtp.php:517
+msgid "From:"
+msgstr "Від:"
+
+# @ bwssmtp
+#: bws-smtp.php:534
+msgid "Yes"
+msgstr "Так"
+
+# @ bwssmtp
+#: bws-smtp.php:534
+msgid "No"
+msgstr "Ні"
+
+# @ bwssmtp
+#: bws-smtp.php:548
+msgid "These settings will be used when sending a test email."
+msgstr "Ці налаштування будуть використані при надсиланні тестового листа."
+
+# @ bwssmtp
+#: bws-smtp.php:559
+msgid "Send A Test Email To"
+msgstr "Відправити Тестовий Лист:"
+
+# @ bwssmtp
+#: bws-smtp.php:564
+msgid "Enter an email address which you want to send a test email to."
+msgstr "Вкажіть email, на який ви хочете відправити тестовий лист."
+
+# @ bwssmtp
+#: bws-smtp.php:567
+msgid "Display log"
+msgstr "Відображати лог"
+
+# @ bwssmtp
+#: bws-smtp.php:568
+msgid "Mark the checkbox, if you want to display the log of sending a test email."
+msgstr "Відмітьте чекбокс, якщо хочете відображати лог відправки тестового листа."
+
+#: bws-smtp.php:579
+msgid "Sending results:"
+msgstr "Результат відправки:"
+
+#: bws-smtp.php:581
+msgid "Sending log:"
+msgstr "Лог відправки:"
+
+# @ bwssmtp
+#: bws-smtp.php:583
+msgid "SMTP log:"
+msgstr "Лог SMTP:"
+
+#: bws-smtp.php:590
+msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+msgstr "Якщо вам сподобався плагін, будь ласка, поставте нам 5 зірочок на WordPress"
+
+#: bws-smtp.php:591
+msgid "Rate the plugin"
+msgstr "Оцінити плагін"
+
+#: bws-smtp.php:594
+msgid "If there is something wrong about it, please contact us"
+msgstr "Якщо виникли проблеми, будь ласка, повідомте нам"
+
+#: bws-smtp.php:645
+msgid "Support"
+msgstr "Техпідтримка"
+
