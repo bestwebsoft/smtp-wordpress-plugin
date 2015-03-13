@@ -4,7 +4,7 @@ Plugin Name: SMTP by BestWebSoft
 Plugin URI: http://bestwebsoft.com/products/
 Description: This plugin introduces an easy way to configure sending email messages via SMTP.
 Author: BestWebSoft
-Version: 1.0.0
+Version: 1.0.1
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -27,54 +27,7 @@ License: GPLv3 or later
 
 if ( ! function_exists( 'bwssmtp_dashboard_menu' ) ) {
 	function bwssmtp_dashboard_menu() {
-		global $bstwbsftwppdtplgns_options,  $bstwbsftwppdtplgns_added_menu;
-		$bws_menu_info = get_plugin_data( plugin_dir_path( __FILE__ ) . "bws_menu/bws_menu.php" );
-		$bws_menu_version = $bws_menu_info['Version'];
-		$base = plugin_basename( __FILE__ );
-
-		if ( ! isset( $bstwbsftwppdtplgns_options ) ) {
-			if ( is_multisite() ) {
-				if ( ! get_site_option( 'bstwbsftwppdtplgns_options' ) )
-					add_site_option( 'bstwbsftwppdtplgns_options', array() );
-				$bstwbsftwppdtplgns_options = get_site_option( 'bstwbsftwppdtplgns_options' );
-			} else {
-				if ( ! get_option( 'bstwbsftwppdtplgns_options' ) )
-					add_option( 'bstwbsftwppdtplgns_options', array() );
-				$bstwbsftwppdtplgns_options = get_option( 'bstwbsftwppdtplgns_options' );
-			}
-		}
-
-		if ( isset( $bstwbsftwppdtplgns_options['bws_menu_version'] ) ) {
-			$bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] = $bws_menu_version;
-			unset( $bstwbsftwppdtplgns_options['bws_menu_version'] );
-			if ( is_multisite() )
-				update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
-			else
-				update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
-			require_once( dirname( __FILE__ ) . '/bws_menu/bws_menu.php' );
-		} else if ( ! isset( $bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] ) || $bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] < $bws_menu_version ) {
-			$bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] = $bws_menu_version;
-			if ( is_multisite() )
-				update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
-			else
-				update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
-			require_once( dirname( __FILE__ ) . '/bws_menu/bws_menu.php' );
-		} else if ( ! isset( $bstwbsftwppdtplgns_added_menu ) ) {
-			$plugin_with_newer_menu = $base;
-			foreach ( $bstwbsftwppdtplgns_options['bws_menu']['version'] as $key => $value ) {
-				if ( $bws_menu_version < $value && is_plugin_active( $base ) ) {
-					$plugin_with_newer_menu = $key;
-				}
-			}
-			$plugin_with_newer_menu = explode( '/', $plugin_with_newer_menu );
-			$wp_content_dir = defined( 'WP_CONTENT_DIR' ) ? basename( WP_CONTENT_DIR ) : 'wp-content';
-			if ( file_exists( ABSPATH . $wp_content_dir . '/plugins/' . $plugin_with_newer_menu[0] . '/bws_menu/bws_menu.php' ) )
-				require_once( ABSPATH . $wp_content_dir . '/plugins/' . $plugin_with_newer_menu[0] . '/bws_menu/bws_menu.php' );
-			else
-				require_once( dirname( __FILE__ ) . '/bws_menu/bws_menu.php' );
-			$bstwbsftwppdtplgns_added_menu = true;
-		}
-		add_menu_page( 'BWS Plugins', 'BWS Plugins', 'manage_options', 'bws_plugins', 'bws_add_menu_render', plugins_url( 'images/px.png', __FILE__ ), 1001 );
+		bws_add_general_menu( plugin_basename( __FILE__ ) );
 		add_submenu_page( 'bws_plugins', 'SMTP', 'SMTP', 'manage_options', 'bwssmtp_settings', 'bwssmtp_settings_page' );
 	}
 }
@@ -82,8 +35,19 @@ if ( ! function_exists( 'bwssmtp_dashboard_menu' ) ) {
 /* Plugin initialization. */
 if ( ! function_exists ( 'bwssmtp_init' ) ) {
 	function bwssmtp_init() {
+		global $bwssmtp_plugin_info;
 		load_plugin_textdomain( 'bwssmtp', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-		bwssmtp_version_check();
+
+		require_once( dirname( __FILE__ ) . '/bws_menu/bws_functions.php' );
+
+		if ( empty( $bwssmtp_plugin_info ) ) {
+			if ( ! function_exists( 'get_plugin_data' ) )
+				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			$bwssmtp_plugin_info = get_plugin_data( __FILE__ );
+		}
+
+		/* Function check if plugin is compatible with current WP version  */
+		bws_wp_version_check( plugin_basename( __FILE__ ), $bwssmtp_plugin_info, "3.2" );
 	}
 }
 
@@ -92,34 +56,12 @@ if ( ! function_exists( 'bwssmtp_admin_init' ) ) {
 	function bwssmtp_admin_init() {
 		global $bws_plugin_info, $bwssmtp_plugin_info;
 
-		if ( ! $bwssmtp_plugin_info )
- 			$bwssmtp_plugin_info = get_plugin_data( __FILE__, false );
-
 		if ( ! isset( $bws_plugin_info ) || empty( $bws_plugin_info ) )
 			$bws_plugin_info = array( 'id' => '185', 'version' => $bwssmtp_plugin_info['Version'] );
 
 		/* Call default options function */
 		if ( isset( $_GET['page'] ) && $_GET['page'] == 'bwssmtp_settings' )
 			bwssmtp_default_options();
-	}
-}
-
-/* Check for compatibility of the current WP version. */
-if ( ! function_exists ( 'bwssmtp_version_check' ) ) {
-	function bwssmtp_version_check() {
-		global $wp_version, $bwssmtp_plugin_info;
-		$require_wp	= '3.2';
-		$plugin	= plugin_basename( __FILE__ );
-		if ( version_compare( $wp_version, $require_wp, "<" ) ) {
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-			if ( is_plugin_active( $plugin ) ) {
-				deactivate_plugins( $plugin );
-				$admin_url = ( function_exists( 'get_admin_url' ) ) ? get_admin_url( null, 'plugins.php' ) : esc_url( '/wp-admin/plugins.php' );
-				if ( ! $bwssmtp_plugin_info )
-					$bwssmtp_plugin_info = get_plugin_data( __FILE__, false );
-				wp_die( "<strong>" . $bwssmtp_plugin_info['Name'] . " </strong> " . __( 'requires', 'bwssmtp' ) . " <strong>WordPress " . $require_wp . "</strong> " . __( 'or higher, that is why it has been deactivated! Please upgrade WordPress and try again.', 'bwssmtp') . "<br /><br />" . __( 'Back to the WordPress', 'bwssmtp') . " <a href='" . $admin_url . "'>" . __( 'Plugins page', 'bwssmtp') . "</a>." );
-			}
-		}
 	}
 }
 
@@ -180,7 +122,7 @@ if ( ! function_exists( 'bwssmtp_dashboard_script_styles' ) ) {
 /* Display settings page. */
 if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 	function bwssmtp_settings_page() {
-		global $bwssmtp_options;
+		global $bwssmtp_options, $bwssmtp_plugin_info;
 
 		$bwssmtp_notices = array();
 
@@ -581,17 +523,8 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 					<pre class="bwssmtp_log_result"><?php var_dump( $bwssmtp_log ); ?></pre>
 				</div>
 				<?php }
-			} ?>
-			<div class="bws-plugin-reviews">
-				<div class="bws-plugin-reviews-rate">
-					<?php _e( 'If you enjoy our plugin, please give it 5 stars on WordPress', 'bwssmtp' ); ?>:
-					<a href="http://wordpress.org/support/view/plugin-reviews/bws-smtp/" target="_blank" title="SMTP by BestWebSoft reviews"><?php _e( 'Rate the plugin', 'bwssmtp' ); ?></a>
-				</div>
-				<div class="bws-plugin-reviews-support">
-					<?php _e( 'If there is something wrong about it, please contact us', 'bwssmtp' ); ?>:
-					<a href="http://support.bestwebsoft.com">http://support.bestwebsoft.com</a>
-				</div>
-			</div>
+			}
+			bws_plugin_reviews_block( $bwssmtp_plugin_info['Name'], 'bws-smtp' ); ?>
 		</div>
 	<?php }
 }
@@ -600,6 +533,8 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 if ( ! function_exists( 'bwssmtp_phpmailer_init' ) ) {
 	function bwssmtp_phpmailer_init( $phpmailer ) {
 		global $bwssmtp_options;
+
+		$bwssmtp_options = get_option( 'bwssmtp_options' );
 
 		$phpmailer->IsSMTP();
 		$from_email = $bwssmtp_options['SMTP']['from_email'];

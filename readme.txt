@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&product_id=94
 Tags: smtp, wordpress smtp, mail smtp, wp_mail, email, mail, phpmailer, wp-phpmailer, mailer, ssl, tls, mail ssl, mail tls, wp mail, smtp plugin, stmp, spmt, test email, send test email, send email via smtp. 
 Requires at least: 3.2
-Tested up to: 4.1
-Stable tag: 1.0.0
+Tested up to: 4.1.1
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,9 @@ This plugin introduces an easy way to configure sending email messages via SMTP.
 
 == Description ==
 
-SMTP by BestWebSoft plugin allows you to configure the sending email messages using mail gateways and email services such as Gmail, Yahoo, Hotmail and many others. This plugin offers an easy and problem-free solution to sending test emails, so that you will not have to struggle with bothersome settings configuration process. 
+SMTP by BestWebSoft plugin allows you to configure the sending email messages using mail gateways and email services such as Gmail, Yahoo, Hotmail and many others. This plugin offers an easy and problem-free solution to sending test emails, so that you will not have to struggle with bothersome settings configuration process.
+
+http://www.youtube.com/watch?v=KsBBg57YC-A
 
 <a href="http://wordpress.org/plugins/bws-smtp/faq/" target="_blank">FAQ</a>
 
@@ -58,6 +60,15 @@ Please try sending a test email, having marked a "Display log" checkbox. You wil
 
 To confirm that the settings are correct, you need to send a test email first. When the test email is sent successfully, please click "Settings are Correct" button.
 
+= I have some problems with the plugin's work. What Information should I provide to receive proper support? =
+
+Please make sure that the problem hasn't been discussed yet on our forum (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If no, please provide the following data along with your problem's description:
+
+1. The link to the page where the problem occurs.
+2. The name of the plugin and its version. If you are using a pro version - your order number.
+3. The version of your WordPress installation.
+4. Copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit?pli=1" target="_blank">Instuction on System Status</a>
+
 == Screenshots ==
 
 1. Plugin settings page.
@@ -65,10 +76,17 @@ To confirm that the settings are correct, you need to send a test email first. W
 
 == Changelog ==
 
+= V1.0.1 - 13.03.2015 =
+* Bugfix : Bug with plugin's option when sending email was fixed.
+* Update : BWS plugins section was updated.
+
 = V1.0.0 - 09.02.2015 =
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.0.1 =
+Bug with plugin's option when sending email was fixed. BWS plugins section was updated.
 
 = V1.0.0 =
 The SMTP by BestWebSoft is ready for use.
