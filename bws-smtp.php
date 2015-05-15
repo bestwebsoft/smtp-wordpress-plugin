@@ -4,7 +4,7 @@ Plugin Name: SMTP by BestWebSoft
 Plugin URI: http://bestwebsoft.com/products/
 Description: This plugin introduces an easy way to configure sending email messages via SMTP.
 Author: BestWebSoft
-Version: 1.0.1
+Version: 1.0.2
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -69,12 +69,6 @@ if ( ! function_exists( 'bwssmtp_admin_init' ) ) {
 if ( ! function_exists ( 'bwssmtp_default_options' ) ) {
 	function bwssmtp_default_options() {
 		global $bwssmtp_options, $bwssmtp_default_options, $bwssmtp_plugin_info;
-
-		if ( ! $bwssmtp_plugin_info ) {
-			if ( ! function_exists( 'get_plugin_data' ) )
-				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-			$bwssmtp_plugin_info = get_plugin_data( __FILE__ );
-		}
 
 		$bwssmtp_default_options = array(
 			'plugin_option_version' => $bwssmtp_plugin_info['Version'],

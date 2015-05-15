@@ -1,10 +1,10 @@
 === SMTP by BestWebSoft ===
 Contributors: bestwebsoft
-Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&product_id=94
+Donate link: http://bestwebsoft.com/donate/
 Tags: smtp, wordpress smtp, mail smtp, wp_mail, email, mail, phpmailer, wp-phpmailer, mailer, ssl, tls, mail ssl, mail tls, wp mail, smtp plugin, stmp, spmt, test email, send test email, send email via smtp. 
 Requires at least: 3.2
-Tested up to: 4.1.1
-Stable tag: 1.0.1
+Tested up to: 4.2.2
+Stable tag: 1.0.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -22,8 +22,8 @@ http://www.youtube.com/watch?v=KsBBg57YC-A
 
 = Features =
 
-* Actions: You can send a test email to check the settings.
-* Actions: You can display test email sending log.
+* You can send a test email to check the settings.
+* You can display test email sending log.
 
 = Translation =
 
@@ -45,6 +45,8 @@ We can fix some things for free for the users who provide translation of our plu
 1. Upload the `bws-smtp` folder to `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
 3. You can adjust the necessary settings using your WordPress admin panel in "BWS Plugins" > "SMTP".
+
+<a href="https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/edit" target="_blank">View a Step-by-step Instruction on SMTP by BestWebSoft Installation</a>.
 
 == Frequently Asked Questions ==
 
@@ -76,6 +78,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.0.2 - 15.05.2015 =
+* Update : BWS plugins section is updated.
+* Update : We updated all functionality for wordpress 4.2.2.
+
 = V1.0.1 - 13.03.2015 =
 * Bugfix : Bug with plugin's option when sending email was fixed.
 * Update : BWS plugins section was updated.
@@ -84,6 +90,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.0.2 =
+BWS plugins section is updated. We updated all functionality for wordpress 4.2.2.
 
 = V1.0.1 =
 Bug with plugin's option when sending email was fixed. BWS plugins section was updated.
