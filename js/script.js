@@ -6,7 +6,7 @@
 			var bwssmtp_field = $( this ).attr( 'id' );
 			$( '.bwssmtp_notice.bwssmtp_notice_error' ).filter( '.error_' + bwssmtp_field ).remove();
 			if ( $( '.bwssmtp_notice.bwssmtp_notice_info' ).length == 0 ) {
-				var bwssmtp_notice = $('<div/>', {
+				$('<div/>', {
 					'class' : 'bwssmtp_notice bwssmtp_notice_info',
 					'html'  : '<p>' + bwssmtp_translation['new_settings'] +'</p>'
 				}).insertBefore( '#bwssmtp_settings_form' );
@@ -14,7 +14,7 @@
 			}
 		});
 
-		/* Manage fields which contains errors. */
+		/* Manage fields which contains errors.*/
 		$( 'input.bwssmtp_error' ).bind( 'input paste change', function() {
 			$( this ).removeClass( 'bwssmtp_error' );
 		});
