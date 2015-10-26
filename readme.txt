@@ -1,10 +1,10 @@
 === SMTP by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
-Tags: smtp, wordpress smtp, mail smtp, wp_mail, email, mail, phpmailer, wp-phpmailer, mailer, ssl, tls, mail ssl, mail tls, wp mail, smtp plugin, stmp, spmt, test email, send test email, send email via smtp. 
-Requires at least: 3.2
-Tested up to: 4.2.2
-Stable tag: 1.0.3
+Tags: add plugin, add smtp plugin, free, free plugin, free smtp plugin, free mail smtp plugin, email, mail, mail smtp, mail ssl, mail tls, Mailer, phpmailer, send email via smtp., send test email, smtp, smtp plugin, spmt, ssl, stmp, test email, tls, wordpress smtp, wp mail, wp-phpmailer, wp_mail, wordpress, wp, wp plugin, wp free plugin, wp smtp, wp smtp plugin, wp simple smtp plugin, wp free smtp, wp free smtp plugin, wordpress plugin, wordpress free plugin, wordpress smtp, wordpress smtp plugin, wordpress simple smtp plugin, wordpress free smtp, wordpress free smtp plugin
+Requires at least: 3.8
+Tested up to: 4.3.1
+Stable tag: 1.0.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,9 +16,9 @@ SMTP by BestWebSoft plugin allows you to configure the sending email messages us
 
 http://www.youtube.com/watch?v=KsBBg57YC-A
 
-<a href="http://wordpress.org/plugins/bws-smtp/faq/" target="_blank">FAQ</a>
+<a href="http://wordpress.org/plugins/bws-smtp/faq/" target="_blank">SMTP by BestWebSoft FAQ</a>
 
-<a href="http://support.bestwebsoft.com" target="_blank">Support</a>
+<a href="http://support.bestwebsoft.com" target="_blank">SMTP by BestWebSoft Support</a>
 
 = Features =
 
@@ -78,6 +78,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.0.4 - 26.10.2015 =
+* Update : Textdomain was changed.
+* Update : We updated all functionality for wordpress 4.3.1.
+
 = V1.0.3 - 02.07.2015 =
 * NEW : Ability to restore settings to defaults.
 
@@ -93,6 +97,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.0.4 =
+Textdomain was changed. We updated all functionality for wordpress 4.3.1.
 
 = V1.0.3 =
 Ability to restore settings to defaults.

@@ -1,19 +1,5 @@
 ( function( $ ) {
 	$( document ).ready( function() {
-
-		/* Manage notices. */
-		$( '#bwssmtp_settings_form input' ).bind( 'input paste change', function() {
-			var bwssmtp_field = $( this ).attr( 'id' );
-			$( '.bwssmtp_notice.bwssmtp_notice_error' ).filter( '.error_' + bwssmtp_field ).remove();
-			if ( $( '.bwssmtp_notice.bwssmtp_notice_info' ).length == 0 ) {
-				$('<div/>', {
-					'class' : 'bwssmtp_notice bwssmtp_notice_info',
-					'html'  : '<p>' + bwssmtp_translation['new_settings'] +'</p>'
-				}).insertBefore( '#bwssmtp_settings_form' );
-				$( '.success_settings, .error_settings' ).remove();
-			}
-		});
-
 		/* Manage fields which contains errors.*/
 		$( 'input.bwssmtp_error' ).bind( 'input paste change', function() {
 			$( this ).removeClass( 'bwssmtp_error' );
