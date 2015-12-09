@@ -6,7 +6,7 @@ Description: This plugin introduces an easy way to configure sending email messa
 Author: BestWebSoft
 Text Domain: bws-smtp
 Domain Path: /languages
-Version: 1.0.4
+Version: 1.0.5
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -29,7 +29,7 @@ License: GPLv3 or later
 
 if ( ! function_exists( 'bwssmtp_dashboard_menu' ) ) {
 	function bwssmtp_dashboard_menu() {
-		bws_add_general_menu( plugin_basename( __FILE__ ) );
+		bws_general_menu();
 		$hook = add_submenu_page( 'bws_plugins', 'SMTP', 'SMTP', 'manage_options', 'bwssmtp_settings', 'bwssmtp_settings_page' );
 		add_action( "load-$hook", 'bwssmtp_screen_options' );
 	}
@@ -328,13 +328,13 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 			);
 		} ?>
 		<div class="wrap">
-			<h2>SMTP <?php _e( 'Settings', 'bws-smtp' )?></h2>
+			<h1>SMTP <?php _e( 'Settings', 'bws-smtp' )?></h1>
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab <?php if ( ! isset( $_GET['action'] ) ) echo ' nav-tab-active'; ?>" href="admin.php?page=bwssmtp_settings"><?php _e( 'Settings', 'bws-smtp' ); ?></a>
 				<a class="nav-tab <?php if ( isset( $_GET['action'] ) && $_GET['action'] == 'test_email' ) echo ' nav-tab-active'; ?>" href="admin.php?page=bwssmtp_settings&action=test_email"><?php _e( 'Send A Test Email', 'bws-smtp' ); ?></a>
 			</h2>
 			<?php if ( ! $bwssmtp_options['settings_changed'] ) { ?>
-				<div class="updated fade"><p><strong><?php _e( 'Configure plugin for sending email messages via SMTP. For more info see', 'bws-smtp' ); ?>&nbsp;<a target="_blank" href="https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/edit#heading=h.jxgxn2x6c109"><?php _e( 'plugin instruction', 'bws-smtp' ); ?></a>.</strong></p></div>
+				<div class="updated"><p><strong><?php _e( 'Configure plugin for sending email messages via SMTP. For more info see', 'bws-smtp' ); ?>&nbsp;<a target="_blank" href="https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/edit#heading=h.jxgxn2x6c109"><?php _e( 'plugin instruction', 'bws-smtp' ); ?></a>.</strong></p></div>
 			<?php }
 			if ( ! empty( $bwssmtp_notices ) ) {
 				foreach ( $bwssmtp_notices as $bwssmtp_field => $bwssmtp_notice ) {
