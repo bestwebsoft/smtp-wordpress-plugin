@@ -15,8 +15,9 @@ SMTP by BestWebSoft plugin allows you to configure the sending email messages us
 
 Features
 -----------------------------
-* You can send a test email to check the settings.
-* You can display test email sending log.
+* Configure the sending email messages
+* Send a test email to check the settings
+* Display test email sending log
 
 
 Translation

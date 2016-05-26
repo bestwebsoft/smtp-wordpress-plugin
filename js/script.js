@@ -5,12 +5,21 @@
 			$( this ).removeClass( 'bwssmtp_error' );
 		});
 
-		// Manage SMTP Authentication.
+		/* Manage SMTP Authentication */
 		$( '#bwssmtp_authentication' ).change( function() {
 			if ( ! $( this ).is( ':checked' ) ) {
 				$( '.bwssmtp_authentication_settings' ).addClass( 'bwssmtp_hidden' );
 			} else {
 				$( '.bwssmtp_authentication_settings' ).removeClass( 'bwssmtp_hidden' );
+			}
+		});
+
+		/* Manage SMTP Authentication */
+		$( '#bwssmtp_use_plugin_settings_from' ).change( function() {
+			if ( ! $( this ).is( ':checked' ) ) {
+				$( '.bwssmtp_plugin_settings_from' ).addClass( 'bwssmtp_hidden' );
+			} else {
+				$( '.bwssmtp_plugin_settings_from' ).removeClass( 'bwssmtp_hidden' );
 			}
 		});
 

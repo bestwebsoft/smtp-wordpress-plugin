@@ -1,10 +1,10 @@
 === SMTP by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
-Tags: add plugin, add smtp plugin, free, free plugin, free smtp plugin, free mail smtp plugin, email, mail, mail smtp, mail ssl, mail tls, Mailer, phpmailer, send email via smtp., send test email, smtp, smtp plugin, spmt, ssl, stmp, test email, tls, wordpress smtp, wp mail, wp-phpmailer, wp_mail, wordpress, wp, wp plugin, wp free plugin, wp smtp, wp smtp plugin, wp simple smtp plugin, wp free smtp, wp free smtp plugin, wordpress plugin, wordpress free plugin, wordpress smtp, wordpress smtp plugin, wordpress simple smtp plugin, wordpress free smtp, wordpress free smtp plugin
+Tags: smtp, smtp plugin, smtp mail, email, mail, mail ssl, mail tls, phpmailer, send email via smtp, mailer, test email, add smtp plugin
 Requires at least: 3.8
-Tested up to: 4.4
-Stable tag: 1.0.5
+Tested up to: 4.5.2
+Stable tag: 1.0.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -22,8 +22,11 @@ http://www.youtube.com/watch?v=KsBBg57YC-A
 
 = Features =
 
-* You can send a test email to check the settings.
-* You can display test email sending log.
+* Configure the sending email messages
+* Send a test email to check the settings
+* Display test email sending log
+
+If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">Suggest a Feature</a>
 
 = Translation =
 
@@ -34,7 +37,7 @@ If you create your own language pack or update the existing one, you can send <a
 
 = Technical support =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in another languages won't be accepted.
+Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
 
 If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
 Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then. 
@@ -69,7 +72,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 1. The link to the page where the problem occurs.
 2. The name of the plugin and its version. If you are using a pro version - your order number.
 3. The version of your WordPress installation.
-4. Copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit?pli=1" target="_blank">Instuction on System Status</a>
+4. Copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit?pli=1" target="_blank">Instruction on System Status</a>
 
 == Screenshots ==
 
@@ -77,6 +80,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 2. Sending a test message page.
 
 == Changelog ==
+
+= V1.0.6 - 26.05.2016 =
+* NEW : An ability to use data from 3rd party plugins for "From" field.
+* Update : All functionality for wordpress 4.5.2 was updated.
 
 = V1.0.5 - 09.12.2015 =
 * Bugfix : The bug with plugin menu duplicating was fixed.
@@ -100,6 +107,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.0.6 =
+An ability to use data from 3rd party plugins for "From" field. All functionality for wordpress 4.5.2 was updated.
 
 = V1.0.5 =
 The bug with plugin menu duplicating was fixed.
