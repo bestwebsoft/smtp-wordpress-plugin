@@ -3,12 +3,12 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: smtp, smtp plugin, smtp mail, email, mail, mail ssl, mail tls, phpmailer, send email via smtp, mailer, test email, add smtp plugin
 Requires at least: 3.8
-Tested up to: 4.5.2
-Stable tag: 1.0.6
+Tested up to: 4.5.3
+Stable tag: 1.0.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-This plugin introduces an easy way to configure sending email messages via SMTP. 
+Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, Hotmail and other services.
 
 == Description ==
 
@@ -33,7 +33,7 @@ If you have a feature, suggestion or idea you'd like to see in the plugin, we'd 
 * Russian (ru_RU)
 * Ukrainian (uk)
 
-If you create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text in PO and MO files</a> to <a href="http://support.bestwebsoft.com" target="_blank">BestWebSoft</a>, and we'll add it to the plugin. You can download the latest version of the program for working with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+If you create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text in PO and MO files</a> to <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a>, and we'll add it to the plugin. You can download the latest version of the program for working with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
 
 = Technical support =
 
@@ -47,7 +47,7 @@ We can fix some things for free for the users who provide translation of our plu
 
 1. Upload the `bws-smtp` folder to `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
-3. You can adjust the necessary settings using your WordPress admin panel in "BWS Plugins" > "SMTP".
+3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "SMTP".
 
 <a href="https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/edit" target="_blank">View a Step-by-step Instruction on SMTP by BestWebSoft Installation</a>.
 
@@ -81,6 +81,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.0.7 - 08.07.2016 =
+* Update : BWS panel section is updated.
+
 = V1.0.6 - 26.05.2016 =
 * NEW : An ability to use data from 3rd party plugins for "From" field.
 * Update : All functionality for wordpress 4.5.2 was updated.
@@ -107,6 +110,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.0.7 =
+BWS panel section is updated.
 
 = V1.0.6 =
 An ability to use data from 3rd party plugins for "From" field. All functionality for wordpress 4.5.2 was updated.

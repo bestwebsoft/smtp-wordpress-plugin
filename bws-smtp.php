@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: SMTP by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/
-Description: This plugin introduces an easy way to configure sending email messages via SMTP.
+Plugin URI: http://bestwebsoft.com/products/smtp/
+Description: Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, Hotmail and other services.
 Author: BestWebSoft
 Text Domain: bws-smtp
 Domain Path: /languages
-Version: 1.0.6
+Version: 1.0.7
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -30,7 +30,7 @@ License: GPLv3 or later
 if ( ! function_exists( 'bwssmtp_dashboard_menu' ) ) {
 	function bwssmtp_dashboard_menu() {
 		bws_general_menu();
-		$hook = add_submenu_page( 'bws_plugins', 'SMTP', 'SMTP', 'manage_options', 'bwssmtp_settings', 'bwssmtp_settings_page' );
+		$hook = add_submenu_page( 'bws_panel', 'SMTP', 'SMTP', 'manage_options', 'bwssmtp_settings', 'bwssmtp_settings_page' );
 		add_action( "load-$hook", 'bwssmtp_screen_options' );
 	}
 }
