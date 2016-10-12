@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: smtp, smtp plugin, smtp mail, email, mail, mail ssl, mail tls, phpmailer, send email via smtp, mailer, test email, add smtp plugin
 Requires at least: 3.8
-Tested up to: 4.5.3
-Stable tag: 1.0.7
+Tested up to: 4.6.1
+Stable tag: 1.0.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,6 +81,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.0.8 - 12.10.2016 =
+* Update : BWS plugins section is updated.
+
 = V1.0.7 - 08.07.2016 =
 * Update : BWS panel section is updated.
 
@@ -110,6 +113,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.0.8 =
+* Plugin optimization completed.
 
 = V1.0.7 =
 BWS panel section is updated.

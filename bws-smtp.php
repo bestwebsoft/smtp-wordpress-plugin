@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: SMTP by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/smtp/
+Plugin URI: http://bestwebsoft.com/products/wordpress/plugins/smtp/
 Description: Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, Hotmail and other services.
 Author: BestWebSoft
 Text Domain: bws-smtp
 Domain Path: /languages
-Version: 1.0.7
+Version: 1.0.8
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
