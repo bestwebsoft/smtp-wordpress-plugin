@@ -1,29 +1,64 @@
 <a href="http://bestwebsoft.com/products/smtp/" target=_blank>SMTP WordPress Plugin</a>
 ========================
 
-Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, Hotmail and other services.
+Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, Hotmail, and other services.
 
 <img src="http://bestwebsoft.com/wp-content/uploads/2015/02/smtp-banner-website.jpg" />
 
-<p>SMTP by BestWebSoft plugin allows you to configure the sending email messages using mail gateways and email services such as Gmail, Yahoo, Hotmail and many others. This plugin offers an easy and problem-free solution to sending test emails, so that you will not have to struggle with bothersome settings configuration process.</p>
+<p>Simple plugin to configure SMTP server to receive email messages from your WordPress website to Gmail, Yahoo, Hotmail, and others.</p>
+
+<p>Install, configure, test, and save your time!</p>
 
 
 <div class='video'></div>
 
 
-<p><a href="http://wordpress.org/plugins/bws-smtp/faq/">SMTP by BestWebSoft FAQ</a></p>
-
-<p><a href="http://support.bestwebsoft.com">SMTP by BestWebSoft Support</a></p>
-
 <h4>Features</h4>
 
 <ul>
-<li>Configure the sending email messages</li>
-<li>Send a test email to check the settings</li>
+<li>Send test email</li>
 <li>Display test email sending log</li>
+<li>Customize &#8220;From&#8221; field:
+
+<ul>
+<li>Name</li>
+<li>Email</li>
+</ul></li>
+<li>Set SMTP:
+
+<ul>
+<li>Host</li>
+<li>Port</li>
+</ul></li>
+<li>Choose SMTP secure connection:
+
+<ul>
+<li>None</li>
+<li>SSL</li>
+<li>TLS</li>
+</ul></li>
+<li>Enable authentication with:
+
+<ul>
+<li>Username</li>
+<li>Password </li>
+</ul></li>
+<li>Compatible with latest WordPress version</li>
+<li>Incredibly simple settings for fast setup without modifying code</li>
+<li>Detailed step-by-step documentation and videos</li>
 </ul>
 
-<p>If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new">Suggest a Feature</a></p>
+<p>If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new">Suggest a Feature</a></p>
+
+<h4>Documentation &#38; Videos</h4>
+
+<ul>
+<li><a href="https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/">[Doc] Installation</a></li>
+</ul>
+
+<h4>Help &#38; Support</h4>
+
+<p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help &#8212; <a href="http://support.bestwebsoft.com/">http://support.bestwebsoft.com/</a></p>
 
 <h4>Translation</h4>
 
@@ -32,12 +67,16 @@ Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, 
 <li>Ukrainian (uk)</li>
 </ul>
 
-<p>If you create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress">the text in PO and MO files</a> to <a href="http://support.bestwebsoft.com/hc/en-us/requests/new">BestWebSoft</a>, and we'll add it to the plugin. You can download the latest version of the program for working with PO and MO files <a href="http://www.poedit.net/download.php">Poedit</a>.</p>
+<p>Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress">the text of PO and MO files</a> to <a href="http://support.bestwebsoft.com/hc/en-us/requests/new">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO <a href="http://www.poedit.net/download.php">files Poedit</a>.</p>
 
-<h4>Technical support</h4>
+<h4>Recommended Plugins</h4>
 
-<p>Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.</p>
+<ul>
+<li><a href="http://bestwebsoft.com/products/wordpress/plugins/updater/?k=1d159d662eeb8f066701430a8681c9d8">Updater</a> - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.</li>
+</ul>
 
-<p>If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
-Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then. 
-We can fix some things for free for the users who provide translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).</p>
+<h4>Donate</h4>
+
+<p>Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.</p>
+
+<p><a href="http://bestwebsoft.com/donate/">Donate Now</a></p>

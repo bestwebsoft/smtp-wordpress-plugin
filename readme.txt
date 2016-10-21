@@ -8,40 +8,63 @@ Stable tag: 1.0.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, Hotmail and other services.
+Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, Hotmail, and other services.
 
 == Description ==
 
-SMTP by BestWebSoft plugin allows you to configure the sending email messages using mail gateways and email services such as Gmail, Yahoo, Hotmail and many others. This plugin offers an easy and problem-free solution to sending test emails, so that you will not have to struggle with bothersome settings configuration process.
+Simple plugin to configure SMTP server to receive email messages from your WordPress website to Gmail, Yahoo, Hotmail, and others.
+
+Install, configure, test, and save your time!
 
 http://www.youtube.com/watch?v=KsBBg57YC-A
 
-<a href="http://wordpress.org/plugins/bws-smtp/faq/" target="_blank">SMTP by BestWebSoft FAQ</a>
-
-<a href="http://support.bestwebsoft.com" target="_blank">SMTP by BestWebSoft Support</a>
-
 = Features =
 
-* Configure the sending email messages
-* Send a test email to check the settings
+* Send test email
 * Display test email sending log
+* Customize “From” field:
+	* Name
+	* Email
+* Set SMTP:
+	* Host
+	* Port
+* Choose SMTP secure connection:
+	* None
+	* SSL
+	* TLS
+* Enable authentication with:
+	* Username
+	* Password 
+* Compatible with latest WordPress version
+* Incredibly simple settings for fast setup without modifying code
+* Detailed step-by-step documentation and videos
 
-If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">Suggest a Feature</a>
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
+
+= Documentation & Videos =
+
+* [[Doc] Installation](https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/)
+
+= Help & Support =
+
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
 
 = Translation =
 
 * Russian (ru_RU)
 * Ukrainian (uk)
 
-If you create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text in PO and MO files</a> to <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a>, and we'll add it to the plugin. You can download the latest version of the program for working with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
-= Technical support =
+= Recommended Plugins =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
+* [Updater](http://bestwebsoft.com/products/wordpress/plugins/updater/?k=1d159d662eeb8f066701430a8681c9d8) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
 
-If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
-Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then. 
-We can fix some things for free for the users who provide translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).
+= Donate =
+
+Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
+
+[Donate Now](http://bestwebsoft.com/donate/)
 
 == Installation ==
 
@@ -49,7 +72,7 @@ We can fix some things for free for the users who provide translation of our plu
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
 3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "SMTP".
 
-<a href="https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/edit" target="_blank">View a Step-by-step Instruction on SMTP by BestWebSoft Installation</a>.
+[View a Step-by-step Instruction on SMTP by BestWebSoft Installation](https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/)
 
 == Frequently Asked Questions ==
 
@@ -67,12 +90,12 @@ To confirm that the settings are correct, you need to send a test email first. W
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed yet on our forum (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If no, please provide the following data along with your problem's description:
+Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
-1. The link to the page where the problem occurs.
-2. The name of the plugin and its version. If you are using a pro version - your order number.
-3. The version of your WordPress installation.
-4. Copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit?pli=1" target="_blank">Instruction on System Status</a>
+1. the link to the page where the problem occurs
+2. the name of the plugin and its version. If you are using a pro version - your order number.
+3. the version of your WordPress installation
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
 
 == Screenshots ==
 
