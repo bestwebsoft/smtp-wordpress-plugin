@@ -1,9 +1,7 @@
-<a href="http://bestwebsoft.com/products/smtp/" target=_blank>SMTP WordPress Plugin</a>
+<a href="http://bestwebsoft.com/products/wordpress/plugins/smtp/" target=_blank>SMTP WordPress Plugin</a>
 ========================
 
 Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, Hotmail, and other services.
-
-<img src="http://bestwebsoft.com/wp-content/uploads/2015/02/smtp-banner-website.jpg" />
 
 <p>Simple plugin to configure SMTP server to receive email messages from your WordPress website to Gmail, Yahoo, Hotmail, and others.</p>
 
