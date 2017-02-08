@@ -1,17 +1,17 @@
 <?php
 /*
 Plugin Name: SMTP by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/wordpress/plugins/smtp/
+Plugin URI: https://bestwebsoft.com/products/wordpress/plugins/smtp/
 Description: Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, Hotmail and other services.
 Author: BestWebSoft
 Text Domain: bws-smtp
 Domain Path: /languages
-Version: 1.0.8
-Author URI: http://bestwebsoft.com/
+Version: 1.0.9
+Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2016  BestWebSoft  ( http://support.bestwebsoft.com )
+/*  © Copyright 2017  BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -68,7 +68,7 @@ if ( ! function_exists( 'bwssmtp_admin_init' ) ) {
 	function bwssmtp_admin_init() {
 		global $bws_plugin_info, $bwssmtp_plugin_info;
 
-		if ( ! isset( $bws_plugin_info ) || empty( $bws_plugin_info ) )
+		if ( empty( $bws_plugin_info ) )
 			$bws_plugin_info = array( 'id' => '185', 'version' => $bwssmtp_plugin_info['Version'] );
 
 		/* Call default options function */
@@ -654,7 +654,7 @@ if ( ! function_exists( 'bwssmtp_links' ) ) {
 			if ( ! is_network_admin() )
 				$links[]	=	'<a href="admin.php?page=bwssmtp_settings">' . __( 'Settings', 'bws-smtp' ) . '</a>';
 			$links[]	=	'<a href="http://wordpress.org/plugins/bws-smtp/faq/" target="_blank">' . __( 'FAQ', 'bws-smtp' ) . '</a>';
-			$links[]	=	'<a href="http://support.bestwebsoft.com">' . __( 'Support', 'bws-smtp' ) . '</a>';
+			$links[]	=	'<a href="https://support.bestwebsoft.com">' . __( 'Support', 'bws-smtp' ) . '</a>';
 		}
 		return $links;
 	}

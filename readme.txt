@@ -1,10 +1,10 @@
 === SMTP by BestWebSoft ===
 Contributors: bestwebsoft
-Donate link: http://bestwebsoft.com/donate/
+Donate link: https://bestwebsoft.com/donate/
 Tags: smtp, smtp plugin, smtp mail, email, mail, mail ssl, mail tls, phpmailer, send email via smtp, mailer, test email, add smtp plugin
 Requires at least: 3.8
-Tested up to: 4.6.1
-Stable tag: 1.0.8
+Tested up to: 4.7.2
+Stable tag: 1.0.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,7 +39,7 @@ http://www.youtube.com/watch?v=KsBBg57YC-A
 * Incredibly simple settings for fast setup without modifying code
 * Detailed step-by-step documentation and videos
 
-If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](https://support.bestwebsoft.com/hc/en-us/requests/new)
 
 = Documentation & Videos =
 
@@ -47,24 +47,24 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Help & Support =
 
-Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <https://support.bestwebsoft.com/>
 
 = Translation =
 
 * Russian (ru_RU)
 * Ukrainian (uk)
 
-Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](https://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
 = Recommended Plugins =
 
-* [Updater](http://bestwebsoft.com/products/wordpress/plugins/updater/?k=1d159d662eeb8f066701430a8681c9d8) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=1d159d662eeb8f066701430a8681c9d8) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
 
 = Donate =
 
 Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
 
-[Donate Now](http://bestwebsoft.com/donate/)
+[Donate Now](https://bestwebsoft.com/donate/)
 
 == Installation ==
 
@@ -90,12 +90,12 @@ To confirm that the settings are correct, you need to send a test email first. W
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
+Please make sure that the problem hasn't been discussed yet on our forum (<https://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/)
 
 == Screenshots ==
 
@@ -103,6 +103,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 2. Sending a test message page.
 
 == Changelog ==
+
+= V1.0.9 - 08.02.2017 =
+* Update : Plugin optimization completed.
 
 = V1.0.8 - 12.10.2016 =
 * Update : BWS plugins section is updated.
@@ -136,6 +139,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.0.9 =
+* Plugin optimization completed.
 
 = V1.0.8 =
 * Plugin optimization completed.
