@@ -39,7 +39,7 @@ Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, 
 
 <ul>
 <li>Username</li>
-<li>Password </li>
+<li>Password</li>
 </ul></li>
 <li>Compatible with latest WordPress version</li>
 <li>Incredibly simple settings for fast setup without modifying code</li>
@@ -51,7 +51,8 @@ Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, 
 <h4>Documentation &#38; Videos</h4>
 
 <ul>
-<li><a href="https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/">[Doc] Installation</a></li>
+<li><a href="https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/">[Doc] Installation</a></li>
+<li><a href="https://docs.google.com/document/d/1u2QAHYmoeRMYDD8eq_8uCiKob7x86ms1lJhmQlwWEpw/">[Doc] How to Use</a></li>
 </ul>
 
 <h4>Help &#38; Support</h4>
@@ -72,9 +73,3 @@ Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, 
 <ul>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/updater/?k=1d159d662eeb8f066701430a8681c9d8">Updater</a> - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.</li>
 </ul>
-
-<h4>Donate</h4>
-
-<p>Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.</p>
-
-<p><a href="https://bestwebsoft.com/donate/">Donate Now</a></p>

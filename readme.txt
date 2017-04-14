@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: smtp, smtp plugin, smtp mail, email, mail, mail ssl, mail tls, phpmailer, send email via smtp, mailer, test email, add smtp plugin
 Requires at least: 3.8
-Tested up to: 4.7.2
-Stable tag: 1.0.9
+Tested up to: 4.7.3
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,7 +34,7 @@ http://www.youtube.com/watch?v=KsBBg57YC-A
 	* TLS
 * Enable authentication with:
 	* Username
-	* Password 
+	* Password
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
 * Detailed step-by-step documentation and videos
@@ -43,7 +43,8 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Documentation & Videos =
 
-* [[Doc] Installation](https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/)
+* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
+* [[Doc] How to Use](https://docs.google.com/document/d/1u2QAHYmoeRMYDD8eq_8uCiKob7x86ms1lJhmQlwWEpw/)
 
 = Help & Support =
 
@@ -60,29 +61,23 @@ Some of these translations are not complete. We are constantly adding new featur
 
 * [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=1d159d662eeb8f066701430a8681c9d8) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
 
-= Donate =
-
-Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
-
-[Donate Now](https://bestwebsoft.com/donate/)
-
 == Installation ==
 
 1. Upload the `bws-smtp` folder to `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
 3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "SMTP".
 
-[View a Step-by-step Instruction on SMTP by BestWebSoft Installation](https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/)
+[View a Step-by-step Instruction on SMTP by BestWebSoft Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 
 == Frequently Asked Questions ==
 
 = Why is my email not sent? =
 
-Please make sure that the data specified on the plugin settings page is correct. In case you are using such mail services as Gmail, Yahoo, or other, you need to contact your mail service support team to get the correct settings. 
+Please make sure that the data specified on the plugin settings page is correct. In case you are using such mail services as Gmail, Yahoo, or other, you need to contact your mail service support team to get the correct settings.
 
 = I've adjusted the settings the right way, and yet the email messages still fail to be sent =
- 
-Please try sending a test email, having marked a "Display log" checkbox. You will then see a log, in which you can find the bug that triggers sending failures. 
+
+Please try sending a test email, having marked a "Display log" checkbox. You will then see a log, in which you can find the bug that triggers sending failures.
 
 = On the plugin settings page, I see 'Not Confirmed' in the Settings Status block. Why? =
 
@@ -103,6 +98,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 2. Sending a test message page.
 
 == Changelog ==
+
+= V1.1.0 - 14.04.2017 =
+* Bugfix : Multiple Cross-Site Scripting (XSS) vulnerability was fixed.
 
 = V1.0.9 - 08.02.2017 =
 * Update : Plugin optimization completed.
@@ -139,6 +137,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.1.0 =
+* Bugs fixed.
 
 = V1.0.9 =
 * Plugin optimization completed.

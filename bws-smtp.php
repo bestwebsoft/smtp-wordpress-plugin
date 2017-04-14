@@ -6,7 +6,7 @@ Description: Configure SMTP server to receive email messages from WordPress to G
 Author: BestWebSoft
 Text Domain: bws-smtp
 Domain Path: /languages
-Version: 1.0.9
+Version: 1.1.0
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -229,7 +229,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 
 		/* Send a test email. */
 		if ( isset( $_POST['bwssmtp_test_send'] ) && check_admin_referer( $plugin_basename, 'bwssmtp_nonce_test' ) ) {
-			
+
 			$bwssmtp_test_to = isset( $_POST['bwssmtp_test_to'] ) ? stripslashes( esc_html( $_POST['bwssmtp_test_to'] ) ) : '';
 			$bwssmtp_test_log = isset( $_POST['bwssmtp_test_log'] ) ? 1 : 0;
 
@@ -243,7 +243,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 					'type'  => 'error',
 					'text'  => sprintf( __( 'Email address %s is not valid!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', $bwssmtp_test_to ) )
 				);
-			} 
+			}
 
 			if ( 1 != $bwssmtp_options['use_plugin_settings_from'] ) {
 				$test_from_email = isset( $_POST['bwssmtp_from_email_test'] ) ? stripslashes( esc_html( $_POST['bwssmtp_from_email_test'] ) ) : '';
@@ -259,7 +259,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 						'type'  => 'error',
 						'text'  => sprintf( __( 'Email address %s is not valid!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', $test_from_email ) )
 					);
-				} 
+				}
 
 				if ( empty( $test_from_name ) ) {
 					$bwssmtp_notices['bwssmtp_from_name_test'] = array(
@@ -283,7 +283,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 					$from_email = $test_from_email;
 					$from_name  = $test_from_name;
 					if ( ! empty( $from_email ) && ! empty( $from_name ) ) {
-						$bwssmtp_phpmailer->SetFrom( $from_email, $from_name ); 
+						$bwssmtp_phpmailer->SetFrom( $from_email, $from_name );
 					}
 				}
 
@@ -385,10 +385,10 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 					printf( '<div class="bwssmtp_notice bwssmtp_notice_%s %s"><p>%s</p></div>', $bwssmtp_notice['type'], $bwssmtp_for, $bwssmtp_notice['text'] );
 				}
 			}
-			if ( ! isset( $_GET['action'] ) ) { 
+			if ( ! isset( $_GET['action'] ) ) {
 				if ( isset( $_REQUEST['bws_restore_default'] ) && check_admin_referer( $plugin_basename, 'bws_settings_nonce_name' ) ) {
 					bws_form_restore_default_confirm( $plugin_basename );
-				} else { 
+				} else {
 					bws_show_settings_notice(); ?>
 					<form id="bwssmtp_settings_form" class="bws_form" method="post" action="admin.php?page=bwssmtp_settings" autocomplete="on">
 						<table class="form-table">
@@ -653,7 +653,7 @@ if ( ! function_exists( 'bwssmtp_links' ) ) {
 		if ( $file == $base ) {
 			if ( ! is_network_admin() )
 				$links[]	=	'<a href="admin.php?page=bwssmtp_settings">' . __( 'Settings', 'bws-smtp' ) . '</a>';
-			$links[]	=	'<a href="http://wordpress.org/plugins/bws-smtp/faq/" target="_blank">' . __( 'FAQ', 'bws-smtp' ) . '</a>';
+			$links[]	=	'<a href="https://support.bestwebsoft.com/hc/en-us/sections/200908825" target="_blank">' . __( 'FAQ', 'bws-smtp' ) . '</a>';
 			$links[]	=	'<a href="https://support.bestwebsoft.com">' . __( 'Support', 'bws-smtp' ) . '</a>';
 		}
 		return $links;
