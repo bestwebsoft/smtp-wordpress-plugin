@@ -6,7 +6,7 @@ Description: Configure SMTP server to receive email messages from WordPress to G
 Author: BestWebSoft
 Text Domain: bws-smtp
 Domain Path: /languages
-Version: 1.1.0
+Version: 1.1.1
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -29,9 +29,10 @@ License: GPLv3 or later
 
 if ( ! function_exists( 'bwssmtp_dashboard_menu' ) ) {
 	function bwssmtp_dashboard_menu() {
-		bws_general_menu();
-		$hook = add_submenu_page( 'bws_panel', 'SMTP', 'SMTP', 'manage_options', 'bwssmtp_settings', 'bwssmtp_settings_page' );
-		add_action( "load-$hook", 'bwssmtp_screen_options' );
+		$settings = add_menu_page( __( 'SMTP Settings', 'bws-smtp' ), 'SMTP', 'manage_options', 'bwssmtp_settings', 'bwssmtp_settings_page', 'none' );
+		add_submenu_page( 'bwssmtp_settings', __( 'SMTP Settings', 'bws-smtp' ), __( 'Settings', 'bws-smtp' ), 'manage_options', 'bwssmtp_settings', 'bwssmtp_settings_page' );
+		add_submenu_page( 'bwssmtp_settings', 'BWS Panel', 'BWS Panel', 'manage_options', 'smtp-bws-panel', 'bws_add_menu_render' );
+		add_action( 'load-' . $settings, 'bwssmtp_screen_options' );
 	}
 }
 
@@ -59,7 +60,7 @@ if ( ! function_exists ( 'bwssmtp_init' ) ) {
 		}
 
 		/* Function check if plugin is compatible with current WP version  */
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $bwssmtp_plugin_info, '3.8' );
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $bwssmtp_plugin_info, '3.9' );
 	}
 }
 
@@ -72,8 +73,22 @@ if ( ! function_exists( 'bwssmtp_admin_init' ) ) {
 			$bws_plugin_info = array( 'id' => '185', 'version' => $bwssmtp_plugin_info['Version'] );
 
 		/* Call default options function */
-		if ( isset( $_GET['page'] ) && $_GET['page'] == 'bwssmtp_settings' )
+		if ( isset( $_GET['page'] ) && 'bwssmtp_settings' == $_GET['page'] )
 			bwssmtp_default_options();
+	}
+}
+
+/* Plugin activate */
+if ( ! function_exists( 'bwssmtp_plugin_activate' ) ) {
+	function bwssmtp_plugin_activate() {
+		/* registering uninstall hook */
+		if ( is_multisite() ) {
+			switch_to_blog( 1 );
+			register_uninstall_hook( __FILE__, 'bwssmtp_uninstall' );
+			restore_current_blog();
+		} else {
+			register_uninstall_hook( __FILE__, 'bwssmtp_uninstall' );
+		}
 	}
 }
 
@@ -106,9 +121,10 @@ if ( ! function_exists ( 'bwssmtp_default_options' ) ) {
 		$bwssmtp_options = get_option( 'bwssmtp_options' );
 
 		if ( ! isset( $bwssmtp_options['plugin_option_version'] ) || $bwssmtp_options['plugin_option_version'] != $bwssmtp_plugin_info['Version'] ) {
-			if ( true == $bwssmtp_options['confirmed'] )
+			if ( true == $bwssmtp_options['confirmed'] ) {
 				$bwssmtp_options['settings_changed'] = true;
-
+			}
+			bwssmtp_plugin_activate();
 			$bwssmtp_options = array_merge( $bwssmtp_default_options, $bwssmtp_options );
 			$bwssmtp_options['plugin_option_version'] = $bwssmtp_plugin_info['Version'];
 			update_option( 'bwssmtp_options', $bwssmtp_options );
@@ -119,10 +135,36 @@ if ( ! function_exists ( 'bwssmtp_default_options' ) ) {
 /* Add script and styles to the dashboard. */
 if ( ! function_exists( 'bwssmtp_dashboard_script_styles' ) ) {
 	function bwssmtp_dashboard_script_styles() {
-		if ( isset( $_GET['page'] ) && $_GET['page'] == 'bwssmtp_settings' ) {
+		wp_enqueue_style( 'bwssmtp_icon', plugins_url( 'css/icon.css', __FILE__ ) );
+		if ( isset( $_GET['page'] ) && 'bwssmtp_settings' == $_GET['page'] ) {
 			wp_enqueue_style( 'bwssmtp_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
 			wp_enqueue_script( 'bwssmtp_script', plugins_url( 'js/script.js', __FILE__ ), array( 'jquery' ) );
 		}
+	}
+}
+
+if ( !function_exists( 'bwssmtp_return_bytes' ) ) {
+	function bwssmtp_return_bytes( $size ) {
+		if ( false == $size ) {
+			return false;
+		}
+		$latter = substr( $size, -1 );
+		$upload_filesize = substr( $size, 0, strlen( $size ) - 1 );
+
+		switch ( strtoupper( $latter )) {
+			case 'P':
+				$upload_filesize *= 1024;
+			case 'T':
+				$upload_filesize *= 1024;
+			case 'G':
+				$upload_filesize *= 1024;
+			case 'M':
+				$upload_filesize *= 1024;
+			case 'K':
+				$upload_filesize *= 1024;
+				break;
+		}
+		return $upload_filesize;
 	}
 }
 
@@ -141,40 +183,40 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				if ( ! is_email( $_POST['bwssmtp_from_email'] ) ) {
 					$bwssmtp_notices['bwssmtp_from_email'] = array(
 						'type' => 'error',
-						'text' => sprintf( __( 'Email address %s in the field "%s" is not valid!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', stripslashes( esc_html( $_POST['bwssmtp_from_email'] ) ) ), sprintf( '<strong>%s</strong>', __( 'From Email', 'bws-smtp' ) ) )
+						'text' => sprintf( __( 'Email address %s in the "%s" field is not valid!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', stripslashes( esc_html( $_POST['bwssmtp_from_email'] ) ) ), sprintf( '<strong>%s</strong>', __( '"From" Field Email', 'bws-smtp' ) ) )
 					);
 				}
 			} else {
 				$bwssmtp_notices['bwssmtp_from_email'] = array(
 					'type' => 'error',
-					'text' => sprintf( __( 'You have not filled the field "%s"!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'From Email', 'bws-smtp' ) ) )
+					'text' => sprintf( __( 'You have not filled the "%s" field!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( '"From" Field Email', 'bws-smtp' ) ) )
 				);
 			}
 
 			if ( isset( $_POST['bwssmtp_from_name'] ) && empty( $_POST['bwssmtp_from_name'] ) ) {
 				$bwssmtp_notices['bwssmtp_from_name'] = array(
 					'type' => 'error',
-					'text' => sprintf( __( 'You have not filled the field "%s"!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'From Name', 'bws-smtp' ) ) )
+					'text' => sprintf( __( 'You have not filled the "%s" field!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( '"From" Field Name', 'bws-smtp' ) ) )
 				);
 			}
 
 			if ( isset( $_POST['bwssmtp_host'] ) && empty( $_POST['bwssmtp_host'] ) ) {
 				$bwssmtp_notices['bwssmtp_host'] = array(
 					'type' => 'error',
-					'text' => sprintf( __( 'You have not filled the field "%s"!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'SMTP Host', 'bws-smtp' ) ) )
+					'text' => sprintf( __( 'You have not filled the "%s" field!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'SMTP Host', 'bws-smtp' ) ) )
 				);
 			}
 
 			if ( isset( $_POST['bwssmtp_port'] ) && empty( $_POST['bwssmtp_port'] ) ) {
 				$bwssmtp_notices['bwssmtp_port'] = array(
 					'type' => 'error',
-					'text' => sprintf(	__( 'You have not filled the field "%s"!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'SMTP Port', 'bws-smtp' ) ) )
+					'text' => sprintf(	__( 'You have not filled the "%s" field!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'SMTP Port', 'bws-smtp' ) ) )
 				);
 			} else {
 				if ( ! preg_match( '/^\d+$/', $_POST['bwssmtp_port'] ) ) {
 					$bwssmtp_notices['bwssmtp_port'] = array(
 						'type' => 'error',
-						'text' => sprintf( __( 'The field "%s" must contain numbers only!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'SMTP Port', 'bws-smtp' ) ) )
+						'text' => sprintf( __( 'The field "%s" must contain only numbers!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'SMTP Port', 'bws-smtp' ) ) )
 					);
 				}
 			}
@@ -182,14 +224,14 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 			if ( isset( $_POST['bwssmtp_authentication'] ) && isset( $_POST['bwssmtp_username'] ) && empty( $_POST['bwssmtp_username'] ) ) {
 				$bwssmtp_notices['bwssmtp_username'] = array(
 					'type' => 'error',
-					'text' => sprintf( __( 'You have not filled the field "%s"!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'SMTP Username', 'bws-smtp' ) ) )
+					'text' => sprintf( __( 'You have not filled the "%s" field!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'SMTP Username', 'bws-smtp' ) ) )
 				);
 			}
 
 			if ( isset( $_POST['bwssmtp_authentication'] ) && isset( $_POST['bwssmtp_password'] ) && empty( $_POST['bwssmtp_password'] ) ) {
 				$bwssmtp_notices['bwssmtp_password'] = array(
 					'type' => 'error',
-					'text' => sprintf( __( 'You have not filled the field "%s"!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'SMTP Password', 'bws-smtp' ) ) )
+					'text' => sprintf( __( 'You have not filled the "%s" field!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'SMTP Password', 'bws-smtp' ) ) )
 				);
 			}
 
@@ -236,7 +278,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 			if ( empty( $bwssmtp_test_to ) ) {
 				$bwssmtp_notices['bwssmtp_test_to'] = array(
 					'type'  => 'error',
-					'text'  => sprintf( __( 'You have not entered an email address which you want to send a test email to!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', $bwssmtp_test_to ) )
+					'text'  => sprintf( __( 'You have not entered an email address which will receive your test email!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', $bwssmtp_test_to ) )
 				);
 			} elseif ( ! is_email( $bwssmtp_test_to ) ) {
 				$bwssmtp_notices['bwssmtp_test_to'] = array(
@@ -245,14 +287,101 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				);
 			}
 
-			if ( 1 != $bwssmtp_options['use_plugin_settings_from'] ) {
+			if ( isset( $_FILES['bwssmtp_test_file_attach'] ) && '' != $_FILES['bwssmtp_test_file_attach']['name'] ) {
+				$bwssmtp_test_file_flag = 1;
+				$bwssmtp_test_file_name = $_FILES['bwssmtp_test_file_attach']['name'];
+				$bwssmtp_test_file_type = $_FILES['bwssmtp_test_file_attach']['type'];
+				$bwssmtp_test_file_tmp_name = $_FILES['bwssmtp_test_file_attach']['tmp_name'];
+
+				if ( 0 == $_FILES['bwssmtp_test_file_attach']['error'] ) {
+					$bwssmtp_mime_type = array(
+						'xl'    => 'application/excel',
+						'js'    => 'application/javascript',
+						'doc'   => 'application/msword',
+						'xlsx'  => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+						'ppsx'  => 'application/vnd.openxmlformats-officedocument.presentationml.slideshow',
+						'pptx'  => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+						'sldx'  => 'application/vnd.openxmlformats-officedocument.presentationml.slide',
+						'docx'  => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+						'pdf'   => 'application/pdf',
+						'ai'    => 'application/postscript',
+						'eps'   => 'application/postscript',
+						'ps'    => 'application/postscript',
+						'xls'   => 'application/vnd.ms-excel',
+						'ppt'   => 'application/vnd.ms-powerpoint',
+						'wbxml' => 'application/vnd.wap.wbxml',
+						'gtar'  => 'application/x-gtar',
+						'tar'   => 'application/x-tar',
+						'tgz'   => 'application/x-tar',
+						'xht'   => 'application/xhtml+xml',
+						'xhtml' => 'application/xhtml+xml',
+						'zip'   => 'application/zip',
+						'mid'   => 'audio/midi',
+						'midi'  => 'audio/midi',
+						'mp3'   => 'audio/mpeg',
+						'wav'   => 'audio/x-wav',
+						'bmp'   => 'image/bmp',
+						'gif'   => 'image/gif',
+						'jpeg'  => 'image/jpeg',
+						'jpe'   => 'image/jpeg',
+						'jpg'   => 'image/jpeg',
+						'png'   => 'image/png',
+						'tiff'  => 'image/tiff',
+						'tif'   => 'image/tiff',
+						'eml'   => 'message/rfc822',
+						'css'   => 'text/css',
+						'html'  => 'text/html',
+						'htm'   => 'text/html',
+						'shtml' => 'text/html',
+						'log'   => 'text/plain',
+						'text'  => 'text/plain',
+						'txt'   => 'text/plain',
+						'rtx'   => 'text/richtext',
+						'rtf'   => 'text/rtf',
+						'vcf'   => 'text/vcard',
+						'vcard' => 'text/vcard',
+						'xml'   => 'text/xml',
+						'xsl'   => 'text/xml',
+						'csv'   => 'text/csv',
+					);
+					if ( ! in_array( $bwssmtp_test_file_type, $bwssmtp_mime_type ) ) {
+						$file_ext = explode( '.', $bwssmtp_test_file_name );
+						$file_ext = end( $file_ext );
+						$bwssmtp_notices['bwssmtp_test_file_attach'] = array(
+							'type'  => 'error',
+							'text'  => sprintf( __( 'It\'s forbidden to attach files with %s extension!', 'bws-smtp' ), sprintf( '<strong>.%s</strong>', $file_ext ) )
+						);
+					}
+				} else {
+					if ( 1 == $_FILES['bwssmtp_test_file_attach']['error'] ) {
+						if ( bwssmtp_return_bytes( ini_get( 'upload_max_filesize' ) ) >= bwssmtp_return_bytes( ini_get( 'post_max_size' ) ) ) {
+							$bwssmtp_max_file_size = ini_get( 'post_max_size' );
+						} else {
+							$bwssmtp_max_file_size = ini_get( 'upload_max_filesize' );
+						}
+						$bwssmtp_notices['bwssmtp_test_file_size'] = array(
+							'type'  => 'error',
+							'text'  => sprintf( __( 'Max. size of the attached file is - %s!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', $bwssmtp_max_file_size ) )
+						);
+					} else {
+						$bwssmtp_notices['bwssmtp_test_file_error'] = array(
+							'type'  => 'error',
+							'text'  => __( 'File upload error!', 'bws-smtp' ),
+						);
+					}
+				}
+			} else {
+				$bwssmtp_test_file_flag = 0;
+			}
+
+			if ( empty( $bwssmtp_options['use_plugin_settings_from'] ) ) {
 				$test_from_email = isset( $_POST['bwssmtp_from_email_test'] ) ? stripslashes( esc_html( $_POST['bwssmtp_from_email_test'] ) ) : '';
 				$test_from_name = isset( $_POST['bwssmtp_from_name_test'] ) ? stripslashes( esc_html( $_POST['bwssmtp_from_name_test'] ) ) : '';
 
 				if ( empty( $test_from_email ) ) {
 					$bwssmtp_notices['bwssmtp_from_email_test'] = array(
 						'type'  => 'error',
-						'text'  => sprintf( __( 'You have not filled the field "%s"!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'From Email', 'bws-smtp' ) ) )
+						'text'  => sprintf( __( 'You have not filled the "%s" field!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( '"From" Field Email', 'bws-smtp' ) ) )
 					);
 				} elseif ( ! is_email( $test_from_email ) ) {
 					$bwssmtp_notices['bwssmtp_from_email_test'] = array(
@@ -264,7 +393,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				if ( empty( $test_from_name ) ) {
 					$bwssmtp_notices['bwssmtp_from_name_test'] = array(
 						'type' => 'error',
-						'text' => sprintf( __( 'You have not filled the field "%s"!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'From Name', 'bws-smtp' ) ) )
+						'text' => sprintf( __( 'You have not filled the "%s" field!', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( '"From" Field Name', 'bws-smtp' ) ) )
 					);
 				}
 			}
@@ -275,7 +404,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				$bwssmtp_phpmailer = new PHPMailer();
 				$bwssmtp_phpmailer->IsSMTP();
 
-				if ( $bwssmtp_options['use_plugin_settings_from'] == 1 ) {
+				if ( ! empty( $bwssmtp_options['use_plugin_settings_from'] ) ) {
 					$from_email = $bwssmtp_options['SMTP']['from_email'];
 					$from_name  = $bwssmtp_options['SMTP']['from_name'];
 					$bwssmtp_phpmailer->SetFrom( $from_email, $from_name );
@@ -287,14 +416,14 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 					}
 				}
 
-				if ( $bwssmtp_options['SMTP']['secure'] !== 'none' ) {
+				if ( 'none' !== $bwssmtp_options['SMTP']['secure'] ) {
 					$bwssmtp_phpmailer->SMTPSecure = $bwssmtp_options['SMTP']['secure'];
 				}
 
 				$bwssmtp_phpmailer->Host = $bwssmtp_options['SMTP']['host'];
 				$bwssmtp_phpmailer->Port = $bwssmtp_options['SMTP']['port'];
 
-				if (  $bwssmtp_options['SMTP']['authentication'] == 1 ) {
+				if ( ! empty( $bwssmtp_options['SMTP']['authentication'] ) ) {
 					$bwssmtp_phpmailer->SMTPAuth = true;
 					$bwssmtp_phpmailer->Username = $bwssmtp_options['SMTP']['username'];
 					$bwssmtp_phpmailer->Password = $bwssmtp_options['SMTP']['password'];
@@ -303,10 +432,13 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				$bwssmtp_phpmailer->CharSet = 'UTF-8';
 				$bwssmtp_phpmailer->isHTML( false );
 				$bwssmtp_phpmailer->Subject = sprintf( __( 'SMTP by BestWebSoft plugin: Test email to %s', 'bws-smtp' ), ' ' . $bwssmtp_test_to );
-				$bwssmtp_phpmailer->MsgHTML( sprintf( __( 'Please, do not reply. This is a test email sent via SMTP by BestWebSoft plugin from %s.', 'bws-smtp' ), get_option( 'home' ) ) );
+				$bwssmtp_phpmailer->MsgHTML( sprintf( __( 'Please do not reply. This is a test email sent via SMTP by BestWebSoft plugin from %s.', 'bws-smtp' ), get_option( 'home' ) ) );
 				$bwssmtp_phpmailer->AddAddress( $bwssmtp_test_to );
+				if ( 1 == $bwssmtp_test_file_flag ) {
+					$bwssmtp_phpmailer->addAttachment( $bwssmtp_test_file_tmp_name, $bwssmtp_test_file_name, 'base64', $bwssmtp_test_file_type );
+				}
 
-				if ( $bwssmtp_test_log == 1 ) {
+				if ( 1 == $bwssmtp_test_log ) {
 					$bwssmtp_phpmailer->SMTPDebug = true;
 					ob_start();
 					$bwssmtp_result = $bwssmtp_phpmailer->Send();
@@ -322,7 +454,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				if ( $bwssmtp_result ) {
 					$bwssmtp_notices['bwssmtp_test_result'] = array(
 						'type'  => 'success',
-						'text'  => sprintf( __( '%s: A test email was sent to %s.', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'Success', 'bws-smtp' ) ), sprintf( '<strong>%s</strong>', $bwssmtp_test_to ) )
+						'text'  => sprintf( __( '%s: A test email has been sent %s.', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'Successfully', 'bws-smtp' ) ), sprintf( '<strong>%s</strong>', $bwssmtp_test_to ) )
 					);
 				} else {
 					$bwssmtp_notices['bwssmtp_test_result'] = array(
@@ -340,10 +472,10 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 		}
 
 		/* Warn about different domain names. */
-		if ( ! empty( $bwssmtp_options['SMTP']['from_email'] ) && is_email( $bwssmtp_options['SMTP']['from_email'] ) && $bwssmtp_options['use_plugin_settings_from'] == 1 ) {
+		if ( ! empty( $bwssmtp_options['SMTP']['from_email'] ) && is_email( $bwssmtp_options['SMTP']['from_email'] ) && ! empty( $bwssmtp_options['use_plugin_settings_from'] ) ) {
 			$bwssmtp_from_email = explode( '@', $bwssmtp_options['SMTP']['from_email'] );
 			$bwssmtp_from_email_host = $bwssmtp_from_email[ 1 ];
-		} elseif ( isset( $_POST['bwssmtp_from_email_test'] ) && is_email( $_POST['bwssmtp_from_email_test'] ) && $bwssmtp_options['use_plugin_settings_from'] == 0  ) {
+		} elseif ( isset( $_POST['bwssmtp_from_email_test'] ) && is_email( $_POST['bwssmtp_from_email_test'] ) && empty( $bwssmtp_options['use_plugin_settings_from'] ) ) {
 			if ( ! empty( $test_from_email ) ) {
 				$bwssmtp_from_email = $test_from_email;
 				$bwssmtp_from_email = explode( '@', $bwssmtp_from_email );
@@ -356,7 +488,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				array_unshift( $bwssmtp_notices,
 					array(
 						'type'  => 'warning',
-						'text'  => sprintf( __( 'A problem with email sending may occur, since most servers require domain name match in "%s" and "%s" fields.', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( 'From Email', 'bws-smtp' ) ), sprintf( '<strong>%s</strong>', __( 'SMTP Host', 'bws-smtp' ) ) )
+						'text'  => sprintf( __( 'A problem with email sending may occur, since most servers require domain name match in "%s" and "%s" fields.', 'bws-smtp' ), sprintf( '<strong>%s</strong>', __( '"From" Field Email', 'bws-smtp' ) ), sprintf( '<strong>%s</strong>', __( 'SMTP Host', 'bws-smtp' ) ) )
 					)
 				);
 			}
@@ -377,7 +509,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 			</ul>
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab <?php if ( ! isset( $_GET['action'] ) ) echo ' nav-tab-active'; ?>" href="admin.php?page=bwssmtp_settings"><?php _e( 'Settings', 'bws-smtp' ); ?></a>
-				<a class="nav-tab <?php if ( isset( $_GET['action'] ) && $_GET['action'] == 'test_email' ) echo ' nav-tab-active'; ?>" href="admin.php?page=bwssmtp_settings&action=test_email"><?php _e( 'Send A Test Email', 'bws-smtp' ); ?></a>
+				<a class="nav-tab <?php if ( isset( $_GET['action'] ) && 'test_email' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=bwssmtp_settings&action=test_email"><?php _e( 'Send A Test Email', 'bws-smtp' ); ?></a>
 			</h2>
 			<?php if ( ! empty( $bwssmtp_notices ) ) {
 				foreach ( $bwssmtp_notices as $bwssmtp_field => $bwssmtp_notice ) {
@@ -402,7 +534,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 											_e( 'Confirmed', 'bws-smtp' );
 										} else {
 											_e( 'Not confirmed', 'bws-smtp' ); ?>
-											<span class="bwssmtp_tooltip"><?php printf( __( 'To confirm the settings, please send a test email, and then click "%s" button after successful sending.', 'bws-smtp' ), __( 'Settings Are Correct', 'bws-smtp' ) ); ?></span>
+											<div class="bws_info"><?php printf( __( 'To confirm the settings, please send a test email, and then click "%s" button after successful sending.', 'bws-smtp' ), __( 'Settings Are Correct', 'bws-smtp' ) ); ?></div>
 										<?php } ?>
 									</td>
 								</tr>
@@ -411,23 +543,23 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 										<label><?php _e( 'Set "From" field (name, email)', 'bws-smtp' ); ?></label>
 									</th>
 									<td>
-										<input id="bwssmtp_use_plugin_settings_from" type="checkbox" name="bwssmtp_use_plugin_settings_from" value="1" <?php if ( $bwssmtp_options['use_plugin_settings_from'] == 1 ) echo 'checked="checked"'; ?>/>
-										<span class="bwssmtp_tooltip"><?php _e( 'Unmark the checkbox if you want to use "From" field from other plugins', 'bws-smtp' ); ?></span>
+										<input id="bwssmtp_use_plugin_settings_from" type="checkbox" name="bwssmtp_use_plugin_settings_from" value="1" <?php checked( $bwssmtp_options['use_plugin_settings_from'] ); ?>/>
+										<div class="bws_info"><?php _e( 'Unmark the checkbox if you want to use "From" field from other plugins', 'bws-smtp' ); ?></div>
 									</td>
 								</tr>
-								<tr class="bwssmtp_plugin_settings_from<?php if ( $bwssmtp_options['use_plugin_settings_from'] != 1 ) echo ' bwssmtp_hidden'; ?>" valign="top">
-									<th scope="row"><label for="bwssmtp_from_email"><?php _e( 'From Email', 'bws-smtp' ); ?></label></th>
+								<tr class="bwssmtp_plugin_settings_from<?php if ( empty( $bwssmtp_options['use_plugin_settings_from'] ) ) echo ' bwssmtp_hidden'; ?>" valign="top">
+									<th scope="row"><label for="bwssmtp_from_email"><?php _e( '"From" Field Email', 'bws-smtp' ); ?></label></th>
 									<td>
 										<input id="bwssmtp_from_email" <?php if ( array_key_exists( 'bwssmtp_from_email', $bwssmtp_notices ) ) echo 'class="bwssmtp_error"'; ?> type="text" name="bwssmtp_from_email" value="<?php echo $bwssmtp_options['SMTP']['from_email']; ?>" maxlength="250" />
-										<span class="bwssmtp_tooltip"><?php printf( __( 'Enter an email, which will be used in the message "%s" field.', 'bws-smtp' ), sprintf( '<span class="bwssmtp_strtolower">%s</span>', __( 'From Email', 'bws-smtp' ) ) ); ?></span>
-										<span class="bwssmtp_tooltip"><?php printf( __( '(Most mail servers can change the email in the "%s" field)', 'bws-smtp' ), sprintf( '<span class="bwssmtp_strtolower">%s</span>', __( 'From Email', 'bws-smtp' ) ) ); ?></span>
+										<div class="bws_info"><?php _e( 'Enter an email, which will be used in the message "From" field.', 'bws-smtp' ); ?></div>
+										<div class="bws_info"><?php _e( 'Most mail servers can change the email address in the message "From" field.', 'bws-smtp' ); ?></div>
 									</td>
 								</tr>
-								<tr class="bwssmtp_plugin_settings_from<?php if ( $bwssmtp_options['use_plugin_settings_from'] != 1 ) echo ' bwssmtp_hidden'; ?>" valign="top">
-									<th scope="row"><label for="bwssmtp_from_name"><?php _e( 'From Name', 'bws-smtp' ); ?></label></th>
+								<tr class="bwssmtp_plugin_settings_from<?php if ( empty( $bwssmtp_options['use_plugin_settings_from'] ) ) echo ' bwssmtp_hidden'; ?>" valign="top">
+									<th scope="row"><label for="bwssmtp_from_name"><?php _e( '"From" Field Name', 'bws-smtp' ); ?></label></th>
 									<td>
 										<input id="bwssmtp_from_name" <?php if ( array_key_exists( 'bwssmtp_from_name', $bwssmtp_notices ) ) echo 'class="bwssmtp_error"'; ?> type="text" name="bwssmtp_from_name" value="<?php echo $bwssmtp_options['SMTP']['from_name']; ?>" maxlength="250" />
-										<span class="bwssmtp_tooltip"><?php printf( __( 'Enter the name which will be used in the message "%s" field.', 'bws-smtp' ), sprintf( '<span class="bwssmtp_strtolower">%s</span>', __( 'From Name', 'bws-smtp' ) ) ); ?></span>
+										<div class="bws_info"><?php _e( 'Enter the name which will be used in the message "From" field.', 'bws-smtp' ); ?></div>
 									</td>
 								</tr>
 								<tr valign="top">
@@ -436,7 +568,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 									</th>
 									<td>
 										<input id="bwssmtp_host" <?php if ( array_key_exists( 'bwssmtp_host', $bwssmtp_notices ) ) echo 'class="bwssmtp_error"'; ?> type="text" name="bwssmtp_host" value="<?php echo $bwssmtp_options['SMTP']['host']; ?>" maxlength="250"/>
-										<span class="bwssmtp_tooltip"><?php _e( 'Enter mail server host name or IP address.', 'bws-smtp' ); ?></span>
+										<div class="bws_info"><?php _e( 'Enter mail server host name or IP address.', 'bws-smtp' ); ?></div>
 									</td>
 								</tr>
 								<tr valign="top">
@@ -445,50 +577,49 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 									</th>
 									<td>
 										<input id="bwssmtp_port" <?php if ( array_key_exists( 'bwssmtp_port', $bwssmtp_notices ) ) echo 'class="bwssmtp_error"'; ?> type="number" name="bwssmtp_port" value="<?php echo $bwssmtp_options['SMTP']['port']; ?>" min="1" max="65535" step="1"/>
-										<span class="bwssmtp_tooltip"><?php _e( 'Enter the mail server port.', 'bws-smtp' ); ?></span>
-										<span class="bwssmtp_tooltip"><?php _e( '(Most mail servers use port 465)', 'bws-smtp' ); ?></span>
+										<div class="bws_info"><?php _e( 'Enter the mail server port. Most mail servers use port 465.', 'bws-smtp' ); ?></div>
 									</td>
 								</tr>
 								<tr valign="top">
 									<th scope="row"><label><?php _e( 'SMTP Secure Connection', 'bws-smtp' ); ?></label></th>
 									<td><fieldset>
 										<div>
-											<input id="bwssmtp_secure_none" type='radio' name="bwssmtp_secure" value="none" <?php if ( $bwssmtp_options['SMTP']['secure'] == "none" ) echo 'checked="checked"'; ?> /><label for="bwssmtp_secure_none"><?php _e( 'None', 'bws-smtp' ); ?></label>
+											<input id="bwssmtp_secure_none" type='radio' name="bwssmtp_secure" value="none" <?php checked( 'none', $bwssmtp_options['SMTP']['secure'] ); ?> /><label for="bwssmtp_secure_none"><?php _e( 'None', 'bws-smtp' ); ?></label>
 										</div>
 										<div>
-											<input id="bwssmtp_secure_ssl" type='radio' name="bwssmtp_secure" value="ssl" <?php if ( $bwssmtp_options['SMTP']['secure'] == "ssl" ) echo 'checked="checked"'; ?> /><label for="bwssmtp_secure_ssl"><?php _e( 'SSL', 'bws-smtp' ); ?></label>
+											<input id="bwssmtp_secure_ssl" type='radio' name="bwssmtp_secure" value="ssl" <?php checked( 'ssl', $bwssmtp_options['SMTP']['secure'] ); ?> /><label for="bwssmtp_secure_ssl"><?php _e( 'SSL', 'bws-smtp' ); ?></label>
 										<div>
 										</div>
-											<input id="bwssmtp_secure_tls" type='radio' name="bwssmtp_secure" value="tls" <?php if ( $bwssmtp_options['SMTP']['secure'] == "tls" ) echo 'checked="checked"'; ?> /><label for="bwssmtp_secure_tls"><?php _e( 'TLS', 'bws-smtp' ); ?></label>
+											<input id="bwssmtp_secure_tls" type='radio' name="bwssmtp_secure" value="tls" <?php checked( 'tls', $bwssmtp_options['SMTP']['secure'] ); ?> /><label for="bwssmtp_secure_tls"><?php _e( 'TLS', 'bws-smtp' ); ?></label>
 										</div>
-										<span class="bwssmtp_tooltip"><?php _e( 'Select the type of secure connection with the mail server.', 'bws-smtp' ); ?></span>
-										<span class="bwssmtp_tooltip"><?php _e( '(Most mail servers use SSL connection)', 'bws-smtp' ); ?></span>
+										<span class="bws_info"><?php _e( 'Select the type of secure connection with the mail server.', 'bws-smtp' ); ?></span>
+										<span class="bws_info"><?php _e( 'Most mail servers use SSL connection.', 'bws-smtp' ); ?></span>
 									</fieldset></td>
 								</tr>
 								<tr valign="top">
 									<th scope="row"><label for="bwssmtp_authentication"><?php _e( 'SMTP Authentication', 'bws-smtp' ); ?></label></th>
 									<td>
-										<input id="bwssmtp_authentication" type="checkbox" name="bwssmtp_authentication" value="1" <?php if ( $bwssmtp_options['SMTP']['authentication'] == 1 ) echo 'checked="checked"'; ?> />
-										<span class="bwssmtp_tooltip"><?php _e( 'Mark the checkbox if authentication is required on the mail server.', 'bws-smtp' ); ?></span>
-										<span class="bwssmtp_tooltip"><?php _e( '(Most mail servers require entering username and password)', 'bws-smtp' ); ?></span>
+										<input id="bwssmtp_authentication" type="checkbox" name="bwssmtp_authentication" value="1" <?php checked( $bwssmtp_options['SMTP']['authentication'] ); ?> />
+										<span class="bws_info"><?php _e( 'Mark the checkbox if authentication is required on the mail server.', 'bws-smtp' ); ?></span>
+										<span class="bws_info"><?php _e( 'Most mail servers require entering username and password.', 'bws-smtp' ); ?></span>
 									</td>
 								</tr>
-								<tr class="bwssmtp_authentication_settings<?php if ( $bwssmtp_options['SMTP']['authentication'] != 1 ) echo ' bwssmtp_hidden'; ?>" valign="top">
+								<tr class="bwssmtp_authentication_settings<?php if ( empty( $bwssmtp_options['SMTP']['authentication'] ) ) echo ' bwssmtp_hidden'; ?>" valign="top">
 									<th scope="row">
 										<label for="bwssmtp_username"><?php _e( 'SMTP Username', 'bws-smtp' ); ?></label>
 									</th>
 									<td>
 										<input id="bwssmtp_username" <?php if ( array_key_exists( 'bwssmtp_username', $bwssmtp_notices ) ) echo 'class="bwssmtp_error"'; ?> type="text" autocomplete="off" name="bwssmtp_username" value="<?php echo $bwssmtp_options['SMTP']['username']; ?>" maxlength="250" />
-										<span class="bwssmtp_tooltip"><?php _e( 'Enter the username for authentication on the mail server.', 'bws-smtp' ); ?></span>
+										<div class="bws_info"><?php _e( 'Enter the username for authentication on the mail server.', 'bws-smtp' ); ?></div>
 									</td>
 								</tr>
-								<tr class="bwssmtp_authentication_settings<?php if ( $bwssmtp_options['SMTP']['authentication'] != 1 ) echo ' bwssmtp_hidden'; ?>" valign="top">
+								<tr class="bwssmtp_authentication_settings<?php if ( empty( $bwssmtp_options['SMTP']['authentication'] ) ) echo ' bwssmtp_hidden'; ?>" valign="top">
 									<th scope="row">
 										<label for="bwssmtp_password"><?php _e( 'SMTP Password', 'bws-smtp' ); ?></label>
 									</th>
 									<td>
 										<input id="bwssmtp_password" <?php if ( array_key_exists( 'bwssmtp_password', $bwssmtp_notices ) ) echo 'class="bwssmtp_error"'; ?> type="password" name="bwssmtp_password" autocomplete="off" value="<?php echo $bwssmtp_options['SMTP']['password']; ?>" maxlength="250" />
-										<span class="bwssmtp_tooltip"><?php _e( 'Enter the password for authentication on the mail server.', 'bws-smtp' ); ?></span>
+										<div class="bws_info"><?php _e( 'Enter the password for authentication on the mail server.', 'bws-smtp' ); ?></div>
 									</td>
 								</tr>
 							</tbody>
@@ -500,8 +631,13 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 					</form>
 					<?php bws_form_restore_default_settings( $plugin_basename );
 				}
-			} elseif ( $_GET['action'] == 'test_email' ) { ?>
-				<form id="bwssmtp_test_form" method="post" action="admin.php?page=bwssmtp_settings&action=test_email">
+			} elseif ( 'test_email' == $_GET['action'] ) {
+				if ( bwssmtp_return_bytes( ini_get( 'upload_max_filesize' ) ) >= bwssmtp_return_bytes( ini_get( 'post_max_size' ) ) ) {
+					$bwssmtp_max_file_size = ini_get( 'post_max_size' );
+				} else {
+					$bwssmtp_max_file_size = ini_get( 'upload_max_filesize' );
+				} ?>
+				<form id="bwssmtp_test_form" enctype="multipart/form-data" method="post" action="admin.php?page=bwssmtp_settings&action=test_email">
 					<table class="form-table">
 						<tbody>
 							<tr valign="top">
@@ -511,10 +647,10 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 								<td>
 									<table id="bwssmtp_current_settings">
 										<tbody>
-											<?php if ( $bwssmtp_options['use_plugin_settings_from'] == 1 ) { ?>
+											<?php if ( ! empty( $bwssmtp_options['use_plugin_settings_from'] ) ) { ?>
 												<tr>
 													<th><?php _e( 'From:', 'bws-smtp' ); ?></th>
-													<td><?php echo $bwssmtp_options['SMTP']['from_name']; ?> &#60;<?php echo  $bwssmtp_options['SMTP']['from_email'] ?>&#62;</td>
+													<td><?php echo $bwssmtp_options['SMTP']['from_name']; ?> &#60;<?php echo $bwssmtp_options['SMTP']['from_email'] ?>&#62;</td>
 												</tr>
 											<?php } ?>
 											<tr>
@@ -527,13 +663,13 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 											</tr>
 											<tr>
 												<th><?php _e( 'SMTP Secure Connection', 'bws-smtp' ); ?>:</th>
-												<td><?php echo ( $bwssmtp_options['SMTP']['secure'] == 'none' ) ? __( ucfirst( $bwssmtp_options['SMTP']['secure'] ), 'bws-smtp' ) : strtoupper( $bwssmtp_options['SMTP']['secure'] ); ?></td>
+												<td><?php echo ( 'none' == $bwssmtp_options['SMTP']['secure'] ) ? __( ucfirst( $bwssmtp_options['SMTP']['secure'] ), 'bws-smtp' ) : strtoupper( $bwssmtp_options['SMTP']['secure'] ); ?></td>
 											</tr>
 											<tr>
 												<th><?php _e( 'SMTP Authentication', 'bws-smtp' ); ?>:</th>
-												<td><?php ( $bwssmtp_options['SMTP']['authentication'] == 1 ) ? _e( 'Yes', 'bws-smtp' ) : _e( 'No', 'bws-smtp' ); ?></td>
+												<td><?php ( 1 == $bwssmtp_options['SMTP']['authentication'] ) ? _e( 'Yes', 'bws-smtp' ) : _e( 'No', 'bws-smtp' ); ?></td>
 											</tr>
-											<?php if ( $bwssmtp_options['SMTP']['authentication'] == 1 ) { ?>
+											<?php if ( 1 == $bwssmtp_options['SMTP']['authentication'] ) { ?>
 												<tr>
 													<th><?php _e( 'SMTP Username', 'bws-smtp' ); ?>:</th>
 													<td><?php echo $bwssmtp_options['SMTP']['username']; ?></td>
@@ -545,8 +681,8 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 											<?php } ?>
 										</tbody>
 									</table>
-									<span class="bwssmtp_tooltip"><?php _e( 'These settings will be used when sending a test email.', 'bws-smtp' ); ?></span>
-									<?php if ( isset( $bwssmtp_phpmailer ) && $bwssmtp_result == true ) { ?>
+									<div class="bws_info"><?php _e( 'These settings will be used when sending a test email.', 'bws-smtp' ); ?></div>
+									<?php if ( isset( $bwssmtp_phpmailer ) && true == $bwssmtp_result ) { ?>
 										<form id="bwssmtp_confirm_form" method="post" action="admin.php?page=bwssmtp_settings&action=test_email&noheader=true">
 											<input id="bwssmtp_confirm_settings" class="button-secondary" type="submit" name="bwssmtp_confirm_settings" value="<?php _e( 'Settings Are Correct', 'bws-smtp' ); ?>">
 											<?php wp_nonce_field( $plugin_basename, 'bwssmtp_nonce_confirm' ); ?>
@@ -554,20 +690,20 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 									<?php } ?>
 								</td>
 							</tr>
-							<?php if ( $bwssmtp_options['use_plugin_settings_from'] == 0 ) { ?>
+							<?php if ( empty( $bwssmtp_options['use_plugin_settings_from'] ) ) { ?>
 								<tr valign="top">
-									<th scope="row"><label for="bwssmtp_from_email_test"><?php _e( 'From Email', 'bws-smtp' ); ?></label></th>
+									<th scope="row"><label for="bwssmtp_from_email_test"><?php _e( '"From" Field Email', 'bws-smtp' ); ?></label></th>
 									<td>
 										<input id="bwssmtp_from_email_test" <?php if ( array_key_exists( 'bwssmtp_from_email_test', $bwssmtp_notices ) ) echo 'class="bwssmtp_error"'; ?> type="text" name="bwssmtp_from_email_test" value="<?php if ( isset( $test_from_email ) ) echo $test_from_email; ?>" maxlength="250" />
-										<span class="bwssmtp_tooltip"><?php printf( __( 'Enter an email, which will be used in the message "%s" field.', 'bws-smtp' ), sprintf( '<span class="bwssmtp_strtolower">%s</span>', __( 'From Email', 'bws-smtp' ) ) ); ?></span>
-										<span class="bwssmtp_tooltip"><?php printf( __( '(Most mail servers can change the email in the "%s" field)', 'bws-smtp' ), sprintf( '<span class="bwssmtp_strtolower">%s</span>', __( 'From Email', 'bws-smtp' ) ) ); ?></span>
+										<div class="bws_info"><?php _e( 'Enter an email, which will be used in the message "From" field.', 'bws-smtp' ); ?></div>
+										<div class="bws_info" ><?php _e( 'Most mail servers can change the email address in the message "From" field.', 'bws-smtp' ); ?></div>
 									</td>
 								</tr>
 								<tr valign="top">
-									<th scope="row"><label for="bwssmtp_from_name_test"><?php _e( 'From Name', 'bws-smtp' ); ?></label></th>
+									<th scope="row"><label for="bwssmtp_from_name_test"><?php _e( '"From" Field Name', 'bws-smtp' ); ?></label></th>
 									<td>
 										<input id="bwssmtp_from_name_test" <?php if ( array_key_exists( 'bwssmtp_from_name_test', $bwssmtp_notices ) ) echo 'class="bwssmtp_error"'; ?> type="text" name="bwssmtp_from_name_test" value="<?php if ( isset( $test_from_name ) ) echo $test_from_name; ?>" maxlength="250" />
-										<span class="bwssmtp_tooltip"><?php printf( __( 'Enter the name which will be used in the message "%s" field.', 'bws-smtp' ), sprintf( '<span class="bwssmtp_strtolower">%s</span>', __( 'From Name', 'bws-smtp' ) ) ); ?></span>
+										<div class="bws_info"><?php _e( 'Enter the name which will be used in the message "From" field.', 'bws-smtp' ); ?></div>
 									</td>
 								</tr>
 							<?php } ?>
@@ -577,11 +713,13 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 								</th>
 								<td>
 									<input id="bwssmtp_test_to" <?php if ( array_key_exists( 'bwssmtp_test_to', $bwssmtp_notices ) ) echo 'class="bwssmtp_error"'; ?> type="text" name="bwssmtp_test_to" value="<?php if ( isset( $bwssmtp_test_to ) ) echo $bwssmtp_test_to; ?>" maxlength="250" />
-									<span class="bwssmtp_tooltip"><?php _e( 'Enter an email address which you want to send a test email to.', 'bws-smtp' ); ?></span>
+									<div class="bws_info"><?php _e( 'Enter an email address which you want to send a test email to.', 'bws-smtp' ); ?></div>
+									<input id="bwssmtp_test_file_attach" type="file" name="bwssmtp_test_file_attach" />
+									<div class="bws_info"><?php printf( __( 'Select a file for the test message. Max. upload file size - %s.', 'bws-smtp' ), $bwssmtp_max_file_size ); ?></div>
 									<p>
-										<input id="bwssmtp_test_log" type="checkbox" name="bwssmtp_test_log" value="1" <?php if ( isset( $bwssmtp_test_log ) && $bwssmtp_test_log == 1 ) echo 'checked="checked"'; ?> />
+										<input id="bwssmtp_test_log" type="checkbox" name="bwssmtp_test_log" value="1" <?php if ( isset( $bwssmtp_test_log ) && 1 == $bwssmtp_test_log ) echo 'checked="checked"'; ?> />
 										<label for="bwssmtp_test_log"><?php _e( 'Display log', 'bws-smtp' ); ?></label>
-										<span class="bwssmtp_tooltip"><?php _e( 'Mark the checkbox, if you want to display the log of sending a test email.', 'bws-smtp' ); ?></span>
+										<div class="bws_info"><?php _e( 'Mark the checkbox, if you want to display the log of sending a test email.', 'bws-smtp' ); ?></div>
 									</p>
 								</td>
 							</tr>
@@ -590,8 +728,8 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 					<p class="submit"><input id="bwssmtp_test_send" class="button-secondary" type="submit" name="bwssmtp_test_send" value="<?php _e( 'Send A Test Email', 'bws-smtp' ) ?>" /></p>
 					<?php wp_nonce_field( $plugin_basename, 'bwssmtp_nonce_test' ); ?>
 				</form>
-				<?php if ( isset( $bwssmtp_test_log ) && $bwssmtp_test_log == 1 && isset( $bwssmtp_phpmailer ) ) { ?>
-					<div id="bwssmtp_log" class="bwssmtp_notice bwssmtp_notice_<?php echo ( $bwssmtp_result == true ) ? 'success' : 'error'; ?> bwssmtp_log_<?php echo ( $bwssmtp_result == true ) ? 'success' : 'error'; ?>">
+				<?php if ( isset( $bwssmtp_test_log ) && 1 == $bwssmtp_test_log && isset( $bwssmtp_phpmailer ) ) { ?>
+					<div id="bwssmtp_log" class="bwssmtp_notice bwssmtp_notice_<?php echo ( true == $bwssmtp_result ) ? 'success' : 'error'; ?> bwssmtp_log_<?php echo ( true == $bwssmtp_result ) ? 'success' : 'error'; ?>">
 						<div class="bwssmtp_log_stage"><?php _e( 'Sending results:', 'bws-smtp' ); ?></div>
 						<div class="bwssmtp_log_result"><?php var_dump( $bwssmtp_result ); ?></div>
 						<div class="bwssmtp_log_stage"><?php _e( 'Sending log:', 'bws-smtp' ); ?></div>
@@ -615,18 +753,18 @@ if ( ! function_exists( 'bwssmtp_phpmailer_init' ) ) {
 
 		$phpmailer->IsSMTP();
 
-		if ( $bwssmtp_options['use_plugin_settings_from'] == 1 ) {
+		if ( ! empty( $bwssmtp_options['use_plugin_settings_from'] ) ) {
 			$from_email = $bwssmtp_options['SMTP']['from_email'];
 			$from_name  = $bwssmtp_options['SMTP']['from_name'];
 			$phpmailer->SetFrom( $from_email, $from_name );
 		}
 
-		if ( $bwssmtp_options['SMTP']['secure'] !== 'none' ) {
+		if ( 'none' !== $bwssmtp_options['SMTP']['secure'] ) {
 			$phpmailer->SMTPSecure = $bwssmtp_options['SMTP']['secure'];
 		}
 		$phpmailer->Host = $bwssmtp_options['SMTP']['host'];
 		$phpmailer->Port = $bwssmtp_options['SMTP']['port'];
-		if (  $bwssmtp_options['SMTP']['authentication'] == 1 ) {
+		if ( ! empty( $bwssmtp_options['SMTP']['authentication'] ) ) {
 			$phpmailer->SMTPAuth = true;
 			$phpmailer->Username = $bwssmtp_options['SMTP']['username'];
 			$phpmailer->Password = $bwssmtp_options['SMTP']['password'];
@@ -651,10 +789,11 @@ if ( ! function_exists( 'bwssmtp_links' ) ) {
 	function bwssmtp_links( $links, $file ) {
 		$base = plugin_basename( __FILE__ );
 		if ( $file == $base ) {
-			if ( ! is_network_admin() )
-				$links[]	=	'<a href="admin.php?page=bwssmtp_settings">' . __( 'Settings', 'bws-smtp' ) . '</a>';
-			$links[]	=	'<a href="https://support.bestwebsoft.com/hc/en-us/sections/200908825" target="_blank">' . __( 'FAQ', 'bws-smtp' ) . '</a>';
-			$links[]	=	'<a href="https://support.bestwebsoft.com">' . __( 'Support', 'bws-smtp' ) . '</a>';
+			if ( ! is_network_admin() ) {
+				$links[] = '<a href="admin.php?page=bwssmtp_settings">' . __( 'Settings', 'bws-smtp' ) . '</a>';
+			}
+			$links[] = '<a href="https://support.bestwebsoft.com/hc/en-us/sections/200908825" target="_blank">' . __( 'FAQ', 'bws-smtp' ) . '</a>';
+			$links[] = '<a href="https://support.bestwebsoft.com">' . __( 'Support', 'bws-smtp' ) . '</a>';
 		}
 		return $links;
 	}
@@ -673,8 +812,8 @@ if ( ! function_exists ( 'bwssmtp_admin_notices' ) ) {
 				<script type="text/javascript">
 					(function($) {
 						$(document).ready( function() {
-							var hide_message  = $.cookie( 'bwssmtp_hide_banner_on_plugin_page' );
-							if ( hide_message == "true" ) {
+							var hide_message = $.cookie( 'bwssmtp_hide_banner_on_plugin_page' );
+							if ( "true" == hide_message ) {
 								$( ".bwssmtp_message" ).css( "display", "none" );
 							} else {
 								$( ".bwssmtp_message" ).css( "display", "block" );
@@ -699,7 +838,7 @@ if ( ! function_exists ( 'bwssmtp_admin_notices' ) ) {
 					</div>
 				</div>
 		<?php }
-		if ( isset( $_REQUEST['page'] ) && $_REQUEST['page'] == 'bwssmtp_settings' )
+		if ( isset( $_REQUEST['page'] ) && 'bwssmtp_settings' == $_REQUEST['page'] )
 			bws_plugin_suggest_feature_banner( $bwssmtp_plugin_info, 'bwssmtp_options', 'bws-smtp' );
 	}
 }
@@ -709,8 +848,8 @@ if ( ! function_exists( 'bwssmtp_screen_options' ) ) {
 	function bwssmtp_screen_options() {
 		$screen = get_current_screen();
 		$args = array(
-			'id' 			=> 'bwssmtp',
-			'section' 		=> '200908825'
+			'id'      => 'bwssmtp',
+			'section' => '200908825'
 		);
 		bws_help_tab( $screen, $args );
 	}
@@ -740,6 +879,7 @@ if ( ! function_exists( 'bwssmtp_uninstall' ) ) {
 	}
 }
 
+register_activation_hook( __FILE__, 'bwssmtp_plugin_activate' );
 /* Add menu to the dashboard. */
 add_action( 'admin_menu', 'bwssmtp_dashboard_menu' );
 /* Initialization */
@@ -754,5 +894,3 @@ add_action( 'phpmailer_init', 'bwssmtp_phpmailer_init' );
 add_filter( 'plugin_action_links', 'bwssmtp_action_links', 10, 2 );
 add_filter( 'plugin_row_meta', 'bwssmtp_links', 10, 2 );
 add_action( 'admin_notices', 'bwssmtp_admin_notices' );
-/* Uninstall plugin. */
-register_uninstall_hook( __FILE__, 'bwssmtp_uninstall' );

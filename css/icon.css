@@ -1,0 +1,8 @@
+/* SMTP icon */
+.menu-top.toplevel_page_bwssmtp_settings .wp-menu-image {
+	font-family: 'bwsicons' !important;
+}
+.menu-top.toplevel_page_bwssmtp_settings .wp-menu-image:before {
+	content: "\e92b";
+	font-family: 'bwsicons' !important;
+}

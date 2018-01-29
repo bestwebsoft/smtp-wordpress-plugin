@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: smtp, smtp plugin, smtp mail, email, mail, mail ssl, mail tls, phpmailer, send email via smtp, mailer, test email, add smtp plugin
-Requires at least: 3.8
-Tested up to: 4.7.3
-Stable tag: 1.1.0
+Requires at least: 3.9
+Tested up to: 4.9.2
+Stable tag: 1.1.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -22,9 +22,10 @@ http://www.youtube.com/watch?v=KsBBg57YC-A
 
 * Send test email
 * Display test email sending log
-* Customize “From” field:
+* Customize "From" field:
 	* Name
 	* Email
+* Send test message with attachment [NEW]
 * Set SMTP:
 	* Host
 	* Port
@@ -48,7 +49,7 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Help & Support =
 
-Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <https://support.bestwebsoft.com/>
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help - <https://support.bestwebsoft.com/>
 
 = Translation =
 
@@ -59,13 +60,13 @@ Some of these translations are not complete. We are constantly adding new featur
 
 = Recommended Plugins =
 
-* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=1d159d662eeb8f066701430a8681c9d8) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=1d159d662eeb8f066701430a8681c9d8) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
 
 == Installation ==
 
 1. Upload the `bws-smtp` folder to `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
-3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "SMTP".
+3. You can adjust the necessary settings using your WordPress admin panel in "SMTP" > "Settings".
 
 [View a Step-by-step Instruction on SMTP by BestWebSoft Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 
@@ -98,6 +99,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 2. Sending a test message page.
 
 == Changelog ==
+
+= V1.1.1 - 29.01.2018 =
+* NEW : Ability to attach a file to the Test message has been added.
+* Update : We updated all functionality for WordPress 4.9.2.
 
 = V1.1.0 - 14.04.2017 =
 * Bugfix : Multiple Cross-Site Scripting (XSS) vulnerability was fixed.
@@ -137,6 +142,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.1.1 =
+* New features added.
+* The compatibility with new WordPress version updated.
 
 = V1.1.0 =
 * Bugs fixed.

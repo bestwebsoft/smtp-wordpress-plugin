@@ -13,14 +13,6 @@ input#bwssmtp_from_email_test, input#bwssmtp_from_name_test {
 #bwssmtp_settings_form td label {
 	margin: 0 10px 0 0;
 }
-.bwssmtp_tooltip {
-	display: block;
-	width: 100%;
-	padding: 3px 0 0 1px;
-	line-height: normal;
-	font-size: 10px;
-	color: #888;
-}
 .bwssmtp_hidden {
 	display: none;
 }
@@ -118,5 +110,8 @@ body:not(.rtl) .bwssmtp_notice_info {
 	}
 	.rtl .bwssmtp_how_to_use {
 		text-align: right;
+	}
+	#bwssmtp_test_file_attach {
+		width: 100%;
 	}
 }
