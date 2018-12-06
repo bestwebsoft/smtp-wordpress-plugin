@@ -6,12 +6,12 @@ Description: Configure SMTP server to receive email messages from WordPress to G
 Author: BestWebSoft
 Text Domain: bws-smtp
 Domain Path: /languages
-Version: 1.1.1
+Version: 1.1.2
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2017  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2018  BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -177,7 +177,6 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 		$plugin_basename = plugin_basename( __FILE__ );
 
 		if ( isset( $_POST['bwssmtp_submit'] ) && check_admin_referer( $plugin_basename, 'bwssmtp_nonce_settings' ) ) {
-
 			/* Check for errors and add notices. */
 			if ( isset( $_POST['bwssmtp_from_email'] ) && ! empty( $_POST['bwssmtp_from_email'] ) ) {
 				if ( ! is_email( $_POST['bwssmtp_from_email'] ) ) {
@@ -247,7 +246,6 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				'username'       => isset( $_POST['bwssmtp_username'] ) ? stripslashes( esc_html( $_POST['bwssmtp_username'] ) ) : '',
 				'password'       => isset( $_POST['bwssmtp_password'] ) ? stripslashes( esc_html( $_POST['bwssmtp_password'] ) ) : ''
 			);
-
 			/* If no errors, update options. */
 			if ( $bwssmtp_notices ) {
 				$bwssmtp_notices['settings'] = array(
@@ -292,7 +290,6 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				$bwssmtp_test_file_name = $_FILES['bwssmtp_test_file_attach']['name'];
 				$bwssmtp_test_file_type = $_FILES['bwssmtp_test_file_attach']['type'];
 				$bwssmtp_test_file_tmp_name = $_FILES['bwssmtp_test_file_attach']['tmp_name'];
-
 				if ( 0 == $_FILES['bwssmtp_test_file_attach']['error'] ) {
 					$bwssmtp_mime_type = array(
 						'xl'    => 'application/excel',
@@ -493,7 +490,6 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				);
 			}
 		}
-
 		if ( isset( $_REQUEST['bws_restore_confirm'] ) && check_admin_referer( $plugin_basename, 'bws_settings_nonce_name' ) ) {
 			$bwssmtp_options = $bwssmtp_default_options;
 			update_option( 'bwssmtp_options', $bwssmtp_options );
@@ -511,6 +507,13 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				<a class="nav-tab <?php if ( ! isset( $_GET['action'] ) ) echo ' nav-tab-active'; ?>" href="admin.php?page=bwssmtp_settings"><?php _e( 'Settings', 'bws-smtp' ); ?></a>
 				<a class="nav-tab <?php if ( isset( $_GET['action'] ) && 'test_email' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=bwssmtp_settings&action=test_email"><?php _e( 'Send A Test Email', 'bws-smtp' ); ?></a>
 			</h2>
+            <noscript>
+                <div class="error below-h2">
+                    <p><strong>
+							<?php _e( 'Please, enable JavaScript in your browser.', 'bws-smtp' ); ?>
+                        </strong></p>
+                </div>
+            </noscript>
 			<?php if ( ! empty( $bwssmtp_notices ) ) {
 				foreach ( $bwssmtp_notices as $bwssmtp_field => $bwssmtp_notice ) {
 					$bwssmtp_for = $bwssmtp_notice['type'] . '_' . $bwssmtp_field;
@@ -522,7 +525,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 					bws_form_restore_default_confirm( $plugin_basename );
 				} else {
 					bws_show_settings_notice(); ?>
-					<form id="bwssmtp_settings_form" class="bws_form" method="post" action="admin.php?page=bwssmtp_settings" autocomplete="on">
+                    <form id="bwssmtp_settings_form" class="bws_form" method="post" action="admin.php?page=bwssmtp_settings" autocomplete="on">
 						<table class="form-table">
 							<tbody>
 								<tr valign="top">
@@ -637,8 +640,13 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 				} else {
 					$bwssmtp_max_file_size = ini_get( 'upload_max_filesize' );
 				} ?>
+                <div class="error below-h2" id="bwssmtp_error_to_show" style="display:none" value="">
+                    <p><strong>
+							<?php _e( 'The file size exceeds the limit allowed', 'bws-smtp' ); ?>
+                        </strong></p>
+                </div>
 				<form id="bwssmtp_test_form" enctype="multipart/form-data" method="post" action="admin.php?page=bwssmtp_settings&action=test_email">
-					<table class="form-table">
+                    <table class="form-table">
 						<tbody>
 							<tr valign="top">
 								<th scope="row">
@@ -714,7 +722,8 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 								<td>
 									<input id="bwssmtp_test_to" <?php if ( array_key_exists( 'bwssmtp_test_to', $bwssmtp_notices ) ) echo 'class="bwssmtp_error"'; ?> type="text" name="bwssmtp_test_to" value="<?php if ( isset( $bwssmtp_test_to ) ) echo $bwssmtp_test_to; ?>" maxlength="250" />
 									<div class="bws_info"><?php _e( 'Enter an email address which you want to send a test email to.', 'bws-smtp' ); ?></div>
-									<input id="bwssmtp_test_file_attach" type="file" name="bwssmtp_test_file_attach" />
+									<input id="bwssmtp_test_file_attach" <?php if ( array_key_exists( 'bwssmtp_test_file_attach', $bwssmtp_notices ) ) echo 'class="bwssmtp_error"'; ?> type="file" name="bwssmtp_test_file_attach" />
+                                    <input id="bwssmtp_test_file_attach_size" value="<?php echo $bwssmtp_max_file_size;?>" style="display:none">
 									<div class="bws_info"><?php printf( __( 'Select a file for the test message. Max. upload file size - %s.', 'bws-smtp' ), $bwssmtp_max_file_size ); ?></div>
 									<p>
 										<input id="bwssmtp_test_log" type="checkbox" name="bwssmtp_test_log" value="1" <?php if ( isset( $bwssmtp_test_log ) && 1 == $bwssmtp_test_log ) echo 'checked="checked"'; ?> />

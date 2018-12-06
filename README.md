@@ -14,7 +14,7 @@
 <li>Email</li>
 </ul>
 </li>
-<li>Send test message with attachment [NEW]</li>
+<li>Send test message with attachment</li>
 <li>Set SMTP:
 <ul>
 <li>Host</li>
