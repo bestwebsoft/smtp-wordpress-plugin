@@ -6,12 +6,12 @@ Description: Configure SMTP server to receive email messages from WordPress to G
 Author: BestWebSoft
 Text Domain: bws-smtp
 Domain Path: /languages
-Version: 1.1.2
+Version: 1.1.3
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2018  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2019  BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -415,7 +415,10 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 
 				if ( 'none' !== $bwssmtp_options['SMTP']['secure'] ) {
 					$bwssmtp_phpmailer->SMTPSecure = $bwssmtp_options['SMTP']['secure'];
-				}
+				} else {
+                    $bwssmtp_phpmailer->SMTPSecure = false;
+                    $bwssmtp_phpmailer->SMTPAutoTLS = false;
+                }
 
 				$bwssmtp_phpmailer->Host = $bwssmtp_options['SMTP']['host'];
 				$bwssmtp_phpmailer->Port = $bwssmtp_options['SMTP']['port'];
@@ -501,7 +504,7 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
 		<div class="wrap">
 			<h1>SMTP <?php _e( 'Settings', 'bws-smtp' )?></h1>
 			<ul class="subsubsub bwssmtp_how_to_use">
-				<li><a href="https://docs.google.com/document/d/1zCvr7FarorqcggQC1PcyjHaxadrCgS3-CMMw3JsvW1M/edit#heading=h.jxgxn2x6c109" target="_blank"><?php _e( 'How to Use Step-by-step Instruction', 'bws-smtp' ); ?></a></li>
+				<li><a href="https://docs.google.com/document/d/1u2QAHYmoeRMYDD8eq_8uCiKob7x86ms1lJhmQlwWEpw/" target="_blank"><?php _e( 'How to Use Step-by-step Instruction', 'bws-smtp' ); ?></a></li>
 			</ul>
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab <?php if ( ! isset( $_GET['action'] ) ) echo ' nav-tab-active'; ?>" href="admin.php?page=bwssmtp_settings"><?php _e( 'Settings', 'bws-smtp' ); ?></a>
@@ -770,7 +773,10 @@ if ( ! function_exists( 'bwssmtp_phpmailer_init' ) ) {
 
 		if ( 'none' !== $bwssmtp_options['SMTP']['secure'] ) {
 			$phpmailer->SMTPSecure = $bwssmtp_options['SMTP']['secure'];
-		}
+		} else {
+            $phpmailer->SMTPSecure = false;
+            $phpmailer->SMTPAutoTLS = false;
+        }
 		$phpmailer->Host = $bwssmtp_options['SMTP']['host'];
 		$phpmailer->Port = $bwssmtp_options['SMTP']['port'];
 		if ( ! empty( $bwssmtp_options['SMTP']['authentication'] ) ) {
