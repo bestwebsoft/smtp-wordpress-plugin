@@ -6,7 +6,7 @@ Description: Configure SMTP server to receive email messages from WordPress to G
 Author: BestWebSoft
 Text Domain: bws-smtp
 Domain Path: /languages
-Version: 1.1.3
+Version: 1.1.4
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
