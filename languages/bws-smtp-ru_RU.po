@@ -2,114 +2,73 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SMTP by BestWebSoft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-05 11:02+0200\n"
-"PO-Revision-Date: 2018-12-05 11:03+0200\n"
+"POT-Creation-Date: 2020-07-31 15:07+0300\n"
+"PO-Revision-Date: 2020-07-31 15:08+0300\n"
 "Last-Translator: plugin@bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Textdomain-Support: yes\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: bws_menu\n"
 
-#: bws-smtp.php:32 bws-smtp.php:33
+#: bws-smtp.php:32 bws-smtp.php:33 bws-smtp.php:188
+#: includes/class-bwssmtp-settings.php:202
 msgid "SMTP Settings"
 msgstr "Настройки SMTP"
 
-#: bws-smtp.php:33 bws-smtp.php:510 bws-smtp.php:515 bws-smtp.php:797
-#: bws-smtp.php:810
+#: bws-smtp.php:33 bws-smtp.php:236 bws-smtp.php:249
+#: includes/class-bwssmtp-settings.php:23
 msgid "Settings"
 msgstr "Настройки"
 
-#: bws-smtp.php:185
-#, php-format
-msgid "Email address %s in the \"%s\" field is not valid!"
-msgstr "Email адрес %s в поле \"%s\" неверный!"
+#: bws-smtp.php:191
+msgid "WARNING"
+msgstr "ВНИМАНИЕ"
 
-#: bws-smtp.php:185 bws-smtp.php:191 bws-smtp.php:388 bws-smtp.php:495
-#: bws-smtp.php:562 bws-smtp.php:711
-msgid "\"From\" Field Email"
-msgstr "Поле \"От\" (Email)"
+#: bws-smtp.php:191
+msgid "The plugin works correctly only if JavaScript is enabled."
+msgstr "Плагин работает корректно только при включенном JavaScript."
 
-#: bws-smtp.php:191 bws-smtp.php:198 bws-smtp.php:205 bws-smtp.php:212
-#: bws-smtp.php:226 bws-smtp.php:233 bws-smtp.php:388 bws-smtp.php:400
-#, php-format
-msgid "You have not filled the \"%s\" field!"
-msgstr "Вы не заполнили поле \"%s\"!"
+#: bws-smtp.php:251
+msgid "FAQ"
+msgstr "FAQ"
 
-#: bws-smtp.php:198 bws-smtp.php:400 bws-smtp.php:570 bws-smtp.php:719
-msgid "\"From\" Field Name"
-msgstr "Поле \"От\" (Имя)"
+#: bws-smtp.php:252
+msgid "Support"
+msgstr "Поддержка"
 
-#: bws-smtp.php:205 bws-smtp.php:495 bws-smtp.php:578 bws-smtp.php:673
-msgid "SMTP Host"
-msgstr "SMTP Хост"
+#: bws-smtp.php:290
+msgid "Close notice"
+msgstr "Закрыть"
 
-#: bws-smtp.php:212 bws-smtp.php:218 bws-smtp.php:587 bws-smtp.php:677
-msgid "SMTP Port"
-msgstr "SMTP Порт"
-
-#: bws-smtp.php:218
-#, php-format
-msgid "The field \"%s\" must contain only numbers!"
-msgstr "Поле \"%s\" должно содержать только цифры!"
-
-#: bws-smtp.php:226 bws-smtp.php:620 bws-smtp.php:690
-msgid "SMTP Username"
-msgstr "SMTP Имя пользователя"
-
-#: bws-smtp.php:233 bws-smtp.php:629 bws-smtp.php:694
-msgid "SMTP Password"
-msgstr "SMTP Пароль"
-
-#: bws-smtp.php:253
-msgid "Settings are not saved."
-msgstr "Настройки не сохранены."
-
-#: bws-smtp.php:265
-msgid "Settings saved."
-msgstr "Настройки сохранены."
-
-#: bws-smtp.php:279
+#: bws-smtp.php:295
 msgid ""
-"You have not entered an email address which will receive your test email!"
+"Configure the \"SMTP by BestWebSoft\" plugin for sending email messages via "
+"SMTP"
 msgstr ""
-"Вы не ввели email адрес, на который вы хотите отправить тестовое письмо!"
+"Настройте плагин \"SMTP by BestWebSoft\" для отправки сообщений через SMTP"
 
-#: bws-smtp.php:284 bws-smtp.php:393
-#, php-format
-msgid "Email address %s is not valid!"
-msgstr "Email адрес %s недействителен!"
+#: bws-smtp.php:296
+msgid "Go to the settings"
+msgstr "Перейти к настройкам"
 
-#: bws-smtp.php:349
-#, php-format
-msgid "It's forbidden to attach files with %s extension!"
-msgstr "Файлы с расширением %s прикреплять запрещено!"
+#: includes/class-bwssmtp-settings.php:24
+msgid "Misc"
+msgstr "Разное"
 
-#: bws-smtp.php:355
-msgid "Wrong file size"
-msgstr "Неверный размер файла"
-
-#: bws-smtp.php:368
-#, php-format
-msgid "Max. size of the attached file is - %s!"
-msgstr "Макс. размер прикрепляемого файла - %s!"
-
-#: bws-smtp.php:373
-msgid "File upload error!"
-msgstr "Ошибка загрузки файла!"
-
-#: bws-smtp.php:438
+#: includes/class-bwssmtp-settings.php:65
 #, php-format
 msgid "SMTP by BestWebSoft plugin: Test email to %s"
 msgstr "Плагин SMTP by BestWebSoft: Тестовое письмо для %s"
 
-#: bws-smtp.php:439
+#: includes/class-bwssmtp-settings.php:66
 #, php-format
 msgid ""
 "Please do not reply. This is a test email sent via SMTP by BestWebSoft "
@@ -118,242 +77,355 @@ msgstr ""
 "Пожалуйста, не отвечайте на это сообщение. Это тестовое письмо, отправленное "
 "с помощью плагина SMTP by BestWebSoft от %s."
 
-#: bws-smtp.php:461
+#: includes/class-bwssmtp-settings.php:132
 #, php-format
-msgid "%s: A test email has been sent %s."
-msgstr "%s: Тестовое письмо было отправлено %s."
+msgid "It's forbidden to attach files with %s extension!"
+msgstr "Файлы с расширением %s прикреплять запрещено!"
 
-#: bws-smtp.php:461
-msgid "Successfully"
-msgstr "Успешно"
-
-#: bws-smtp.php:466
+#: includes/class-bwssmtp-settings.php:138
 #, php-format
-msgid "%s: A test email was not sent."
-msgstr "%s: Тестовое письмо не отправлено."
+msgid "Successfully: A test email has been sent to %s."
+msgstr "Успешно: Tестовое письмо было отправлено на %s."
 
-#: bws-smtp.php:466
-msgid "Error"
-msgstr "Ошибка"
-
-#: bws-smtp.php:495
-#, php-format
-msgid ""
-"A problem with email sending may occur, since most servers require domain "
-"name match in \"%s\" and \"%s\" fields."
-msgstr ""
-"Может возникнуть проблема с отправкой почты, т. к. многие почтовые сервера "
-"требуют совпадения доменного имени в полях \"%s\" и \"%s\"."
-
-#: bws-smtp.php:505
-msgid "All plugin settings were restored."
-msgstr "Настройки плагина были восстановлены."
-
-#: bws-smtp.php:512
-msgid "How to Use Step-by-step Instruction"
-msgstr "Инструкция по использованию"
-
-#: bws-smtp.php:516 bws-smtp.php:745
-msgid "Send A Test Email"
-msgstr "Отправить тестовое письмо"
-
-#: bws-smtp.php:521
-msgid "Please, enable JavaScript in your browser."
-msgstr "Пожалуйста, включите JavaScript в вашем браузере."
-
-#: bws-smtp.php:541
-msgid "Settings Status"
-msgstr "Состояние настроек"
-
-#: bws-smtp.php:545
-msgid "Confirmed"
-msgstr "Подтверждены"
-
-#: bws-smtp.php:547
-msgid "Not confirmed"
-msgstr "Не подтверждены"
-
-#: bws-smtp.php:548
-#, php-format
-msgid ""
-"To confirm the settings, please send a test email, and then click \"%s\" "
-"button after successful sending."
-msgstr ""
-"Для подтверждения настроек, пожалуйста, отправьте тестовое письмо и нажмите "
-"на кнопку \"%s\" после успешной отправки."
-
-#: bws-smtp.php:548 bws-smtp.php:703
+#: includes/class-bwssmtp-settings.php:141
 msgid "Settings Are Correct"
 msgstr "Настройки верны"
 
-#: bws-smtp.php:554
-msgid "Set \"From\" field (name, email)"
-msgstr "Задать поле \"От\" (имя, email)"
+#: includes/class-bwssmtp-settings.php:144
+msgid "View log"
+msgstr "Посмотреть журнал"
 
-#: bws-smtp.php:558
+#: includes/class-bwssmtp-settings.php:145
+msgid "A test email was not sent."
+msgstr "Тестовое письмо не было отправлено."
+
+#: includes/class-bwssmtp-settings.php:149
 msgid ""
-"Unmark the checkbox if you want to use \"From\" field from other plugins"
+"You have not entered an email address which will receive your test email!"
 msgstr ""
-"Снимите галочку с этой опции, если хотите использовать поле \"От\" других "
-"плагинов"
+"Вы не ввели email адрес, на который вы хотите отправить тестовое письмо!"
 
-#: bws-smtp.php:565 bws-smtp.php:714
+#: includes/class-bwssmtp-settings.php:170
+#: includes/class-bwssmtp-settings.php:172
+#: includes/class-bwssmtp-settings.php:176
+#: includes/class-bwssmtp-settings.php:180
+#: includes/class-bwssmtp-settings.php:182
+#, php-format
+msgid "You have not filled the \"%s\" field!"
+msgstr "Вы не заполнили поле \"%s\"!"
+
+# @ bwssmtp
+#: includes/class-bwssmtp-settings.php:170
+#: includes/class-bwssmtp-settings.php:245
+msgid "From Email Address"
+msgstr "Поле \"От\" (Email)"
+
+# @ bwssmtp
+#: includes/class-bwssmtp-settings.php:172
+#: includes/class-bwssmtp-settings.php:253
+msgid "From Name"
+msgstr "От Имени"
+
+#: includes/class-bwssmtp-settings.php:176
+#: includes/class-bwssmtp-settings.php:260
+msgid "SMTP Host"
+msgstr "SMTP Хост"
+
+#: includes/class-bwssmtp-settings.php:180
+#: includes/class-bwssmtp-settings.php:291
+msgid "SMTP Username"
+msgstr "SMTP Имя пользователя"
+
+#: includes/class-bwssmtp-settings.php:182
+#: includes/class-bwssmtp-settings.php:298
+msgid "SMTP Password"
+msgstr "SMTP Пароль"
+
+#: includes/class-bwssmtp-settings.php:188
+msgid "Settings saved."
+msgstr "Настройки сохранены."
+
+#: includes/class-bwssmtp-settings.php:190
+msgid "Settings are not saved."
+msgstr "Настройки не сохранены."
+
+#: includes/class-bwssmtp-settings.php:207
+msgid "Status"
+msgstr "Статус"
+
+#: includes/class-bwssmtp-settings.php:210
+msgid "Confirmed"
+msgstr "Подтвержден"
+
+#: includes/class-bwssmtp-settings.php:212
+msgid "Not confirmed"
+msgstr "Не подтвержден"
+
+#: includes/class-bwssmtp-settings.php:214
+msgid ""
+"To confirm the settings, please send a test email, and then click \"Settings "
+"Are Correct\" button after successful sending."
+msgstr ""
+"Чтобы подтвердить настройки, отправьте тестовое электронное письмо, а затем "
+"нажмите кнопку «Настройки верны» после успешной отправки."
+
+#: includes/class-bwssmtp-settings.php:219
+msgid "Test Email Address"
+msgstr "Тестовый Email адрес"
+
+#: includes/class-bwssmtp-settings.php:224
+#, php-format
+msgid "Select a file for the test message. Max. upload file size - %s."
+msgstr ""
+"Выберите файл для тестового сообщения. Макс. размер загружаемого файла - %s."
+
+#: includes/class-bwssmtp-settings.php:225
+msgid "Log"
+msgstr "Журнал"
+
+#: includes/class-bwssmtp-settings.php:226
+msgid "Enable to display log."
+msgstr "Включить отображение журнала."
+
+#: includes/class-bwssmtp-settings.php:227
+msgid "Send Now"
+msgstr "Отправить сейчас"
+
+#: includes/class-bwssmtp-settings.php:232
+msgid "The file size exceeds the limit allowed"
+msgstr "Превышен допустимый размер файла"
+
+#: includes/class-bwssmtp-settings.php:239
+msgid "From Fields Importance"
+msgstr "Поле \"От\""
+
+#: includes/class-bwssmtp-settings.php:241
+msgid ""
+"Enable to use the “From” field values below. Display to use settings "
+"specified in other plugins."
+msgstr ""
+"Включите использование значений поля «От» ниже. Дисплей для использования "
+"настроек, указанных в других плагинах."
+
+#: includes/class-bwssmtp-settings.php:248
 msgid "Enter an email, which will be used in the message \"From\" field."
 msgstr ""
 "Введите email адрес, который будет использоваться в сообщении в поле \"От\"."
 
-#: bws-smtp.php:566 bws-smtp.php:715
+#: includes/class-bwssmtp-settings.php:249
 msgid ""
 "Most mail servers can change the email address in the message \"From\" field."
 msgstr ""
 "Большинство почтовых серверов могут изменять email адрес в сообщении в поле "
 "\"От\"."
 
-#: bws-smtp.php:573 bws-smtp.php:722
+#: includes/class-bwssmtp-settings.php:256
 msgid "Enter the name which will be used in the message \"From\" field."
 msgstr "Введите имя, которое будет использоваться в сообщении в поле \"От\"."
 
-#: bws-smtp.php:582
+#: includes/class-bwssmtp-settings.php:263
 msgid "Enter mail server host name or IP address."
 msgstr "Введите имя хоста или IP адрес почтового сервера."
 
-#: bws-smtp.php:591
+#: includes/class-bwssmtp-settings.php:267
+msgid "SMTP Connection Type"
+msgstr "Тип соединения SMTP"
+
+#: includes/class-bwssmtp-settings.php:270
+msgid "None"
+msgstr "Отсутствует"
+
+#: includes/class-bwssmtp-settings.php:271
+msgid "SSL"
+msgstr "SSL"
+
+#: includes/class-bwssmtp-settings.php:272
+msgid "TLS"
+msgstr "TLS"
+
+#: includes/class-bwssmtp-settings.php:274
+msgid ""
+"Select the type of secure connection with the mail server. Most mail servers "
+"use SSL connection."
+msgstr ""
+"Выберите тип безопасного соединения с почтовым сервером. Большинство "
+"почтовых серверов используют SSL-соединение."
+
+#: includes/class-bwssmtp-settings.php:278
+msgid "SMTP Port"
+msgstr "SMTP Порт"
+
+#: includes/class-bwssmtp-settings.php:281
 msgid "Enter the mail server port. Most mail servers use port 465."
 msgstr ""
 "Введите порт почтового сервера. Большинство почтовых серверов используют 465 "
 "порт."
 
-#: bws-smtp.php:595 bws-smtp.php:681
-msgid "SMTP Secure Connection"
-msgstr "SMTP Защищенное соединение"
-
-#: bws-smtp.php:598
-msgid "None"
-msgstr "Отсутствует"
-
-#: bws-smtp.php:601
-msgid "SSL"
-msgstr "SSL"
-
-#: bws-smtp.php:604
-msgid "TLS"
-msgstr "TLS"
-
-#: bws-smtp.php:606
-msgid "Select the type of secure connection with the mail server."
-msgstr "Выберите тип защищенного соединения с почтовым сервером."
-
-#: bws-smtp.php:607
-msgid "Most mail servers use SSL connection."
-msgstr "Большинство почтовых серверов используют SSL соединение."
-
-#: bws-smtp.php:611 bws-smtp.php:685
+#: includes/class-bwssmtp-settings.php:285
 msgid "SMTP Authentication"
 msgstr "SMTP Аутентификация"
 
-#: bws-smtp.php:614
-msgid "Mark the checkbox if authentication is required on the mail server."
-msgstr "Отметьте, если почтовый сервер требует аутентификации."
+#: includes/class-bwssmtp-settings.php:287
+msgid "Enable to use the SMTP Authentication."
+msgstr "Включить, чтобы использовать SMTP Authentication."
 
-#: bws-smtp.php:615
-msgid "Most mail servers require entering username and password."
-msgstr ""
-"Большинство почтовых серверов требуют ввода имени пользователя и пароля."
-
-#: bws-smtp.php:624
+#: includes/class-bwssmtp-settings.php:294
 msgid "Enter the username for authentication on the mail server."
 msgstr "Введите имя пользователя для аутентификации на почтовом сервере."
 
-#: bws-smtp.php:633
+#: includes/class-bwssmtp-settings.php:301
 msgid "Enter the password for authentication on the mail server."
 msgstr "Введите пароль для аутентификации на почтовом сервере."
 
-#: bws-smtp.php:640
-msgid "Save Changes"
-msgstr "Сохранить изменения"
+#: includes/class-bwssmtp-settings.php:313
+msgid "Test Email Log"
+msgstr "Журнал тестового письма"
 
-#: bws-smtp.php:653
-msgid "The file size exceeds the limit allowed"
-msgstr "Превышен допустимый размер файла"
-
-#: bws-smtp.php:661
-msgid "Current Settings"
-msgstr "Текущие настройки"
-
-#: bws-smtp.php:668
-msgid "From:"
-msgstr "От:"
-
-#: bws-smtp.php:686
-msgid "Yes"
-msgstr "Да"
-
-#: bws-smtp.php:686
-msgid "No"
-msgstr "Нет"
-
-#: bws-smtp.php:700
-msgid "These settings will be used when sending a test email."
-msgstr "Эти настройки будут использованы при отправке тестового письма."
-
-#: bws-smtp.php:728
-msgid "Send A Test Email To"
-msgstr "Отправить тестовое письмо:"
-
-#: bws-smtp.php:732
-msgid "Enter an email address which you want to send a test email to."
-msgstr "Введите email адрес, на который вы хотите отправить тестовое письмо."
-
-#: bws-smtp.php:735
-#, php-format
-msgid "Select a file for the test message. Max. upload file size - %s."
-msgstr ""
-"Выберите файл для тестового сообщения. Макс. размер загружаемого файла - %s."
-
-#: bws-smtp.php:738
-msgid "Display log"
-msgstr "Показать журнал"
-
-#: bws-smtp.php:739
-msgid ""
-"Mark the checkbox, if you want to display the log of sending a test email."
-msgstr ""
-"Включите эту опцию, если хотите отображать журнал отправки тестового письма."
-
-#: bws-smtp.php:750
+#: includes/class-bwssmtp-settings.php:316
 msgid "Sending results:"
 msgstr "Результат отправки:"
 
-#: bws-smtp.php:752
-msgid "Sending log:"
-msgstr "Журнал отправки:"
-
-#: bws-smtp.php:754
+#: includes/class-bwssmtp-settings.php:318
 msgid "SMTP log:"
 msgstr "Журнал SMTP:"
 
-#: bws-smtp.php:812
-msgid "FAQ"
-msgstr "FAQ"
+#~ msgid "Go to log"
+#~ msgstr "Перейти к журналу"
 
-#: bws-smtp.php:813
-msgid "Support"
-msgstr "Поддержка"
+#~ msgid "Display log"
+#~ msgstr "Показать журнал"
 
-#: bws-smtp.php:847
-msgid "Close notice"
-msgstr "Закрыть"
+#, fuzzy
+#~| msgid "You have not filled the \"%s\" field!"
+#~ msgid "You have not filled the \"From Email Address\" field!"
+#~ msgstr "Вы не заполнили поле \"%s\"!"
 
-#: bws-smtp.php:852
-msgid ""
-"Configure the \"SMTP by BestWebSoft\" plugin for sending email messages via "
-"SMTP"
-msgstr ""
-"Настройте плагин \"SMTP by BestWebSoft\" для отправки сообщений через SMTP"
+#, fuzzy
+#~| msgid "You have not filled the \"%s\" field!"
+#~ msgid "You have not filled the \"From Name\" field!"
+#~ msgstr "Вы не заполнили поле \"%s\"!"
 
-#: bws-smtp.php:853
-msgid "Go to the settings"
-msgstr "Перейти к настройкам"
+#, fuzzy
+#~| msgid "You have not filled the \"%s\" field!"
+#~ msgid "You have not filled the \"SMTP Username\" field!"
+#~ msgstr "Вы не заполнили поле \"%s\"!"
+
+#, fuzzy
+#~| msgid "You have not filled the \"%s\" field!"
+#~ msgid "You have not filled the \"SMTP Password\" field!"
+#~ msgstr "Вы не заполнили поле \"%s\"!"
+
+#~ msgid "Email address %s in the \"%s\" field is not valid!"
+#~ msgstr "Email адрес %s в поле \"%s\" неверный!"
+
+#~ msgid "\"From\" Field Email"
+#~ msgstr "Поле \"От\" (Email)"
+
+#~ msgid "\"From\" Field Name"
+#~ msgstr "Поле \"От\" (Имя)"
+
+#~ msgid "The field \"%s\" must contain only numbers!"
+#~ msgstr "Поле \"%s\" должно содержать только цифры!"
+
+#~ msgid "Email address %s is not valid!"
+#~ msgstr "Email адрес %s недействителен!"
+
+#~ msgid "Max. size of the attached file is - %s!"
+#~ msgstr "Макс. размер прикрепляемого файла - %s!"
+
+#~ msgid "File upload error!"
+#~ msgstr "Ошибка загрузки файла!"
+
+#~ msgid "Successfully"
+#~ msgstr "Успешно"
+
+#~ msgid "Error"
+#~ msgstr "Ошибка"
+
+#~ msgid ""
+#~ "A problem with email sending may occur, since most servers require domain "
+#~ "name match in \"%s\" and \"%s\" fields."
+#~ msgstr ""
+#~ "Может возникнуть проблема с отправкой почты, т. к. многие почтовые "
+#~ "сервера требуют совпадения доменного имени в полях \"%s\" и \"%s\"."
+
+#~ msgid "All plugin settings were restored."
+#~ msgstr "Настройки плагина были восстановлены."
+
+#~ msgid "How to Use Step-by-step Instruction"
+#~ msgstr "Инструкция по использованию"
+
+#~ msgid "Send A Test Email"
+#~ msgstr "Отправить тестовое письмо"
+
+#~ msgid "Please, enable JavaScript in your browser."
+#~ msgstr "Пожалуйста, включите JavaScript в вашем браузере."
+
+#~ msgid "Settings Status"
+#~ msgstr "Состояние настроек"
+
+#~ msgid ""
+#~ "To confirm the settings, please send a test email, and then click \"%s\" "
+#~ "button after successful sending."
+#~ msgstr ""
+#~ "Для подтверждения настроек, пожалуйста, отправьте тестовое письмо и "
+#~ "нажмите на кнопку \"%s\" после успешной отправки."
+
+#~ msgid "Set \"From\" field (name, email)"
+#~ msgstr "Задать поле \"От\" (имя, email)"
+
+#~ msgid ""
+#~ "Unmark the checkbox if you want to use \"From\" field from other plugins"
+#~ msgstr ""
+#~ "Снимите галочку с этой опции, если хотите использовать поле \"От\" других "
+#~ "плагинов"
+
+#~ msgid "SMTP Secure Connection"
+#~ msgstr "SMTP Защищенное соединение"
+
+#~ msgid "Select the type of secure connection with the mail server."
+#~ msgstr "Выберите тип защищенного соединения с почтовым сервером."
+
+#~ msgid "Most mail servers use SSL connection."
+#~ msgstr "Большинство почтовых серверов используют SSL соединение."
+
+#~ msgid "Mark the checkbox if authentication is required on the mail server."
+#~ msgstr "Отметьте, если почтовый сервер требует аутентификации."
+
+#~ msgid "Most mail servers require entering username and password."
+#~ msgstr ""
+#~ "Большинство почтовых серверов требуют ввода имени пользователя и пароля."
+
+#~ msgid "Save Changes"
+#~ msgstr "Сохранить изменения"
+
+#~ msgid "Current Settings"
+#~ msgstr "Текущие настройки"
+
+#~ msgid "From:"
+#~ msgstr "От:"
+
+#~ msgid "Yes"
+#~ msgstr "Да"
+
+#~ msgid "No"
+#~ msgstr "Нет"
+
+#~ msgid "These settings will be used when sending a test email."
+#~ msgstr "Эти настройки будут использованы при отправке тестового письма."
+
+#~ msgid "Enter an email address which you want to send a test email to."
+#~ msgstr ""
+#~ "Введите email адрес, на который вы хотите отправить тестовое письмо."
+
+#~ msgid ""
+#~ "Mark the checkbox, if you want to display the log of sending a test email."
+#~ msgstr ""
+#~ "Включите эту опцию, если хотите отображать журнал отправки тестового "
+#~ "письма."
+
+#~ msgid "Wrong file size"
+#~ msgstr "Неверный размер файла"
 
 #~ msgid "Enter an email, which will be used in the message \"%s\" field."
 #~ msgstr ""
@@ -425,16 +497,8 @@ msgstr "Перейти к настройкам"
 #~ msgstr "Поле \"%s\" должно содержать только цифры!"
 
 # @ bwssmtp
-#~ msgid "From Name"
-#~ msgstr "От Имени"
-
-# @ bwssmtp
 #~ msgid "You have not filled the field \"%s\"!"
 #~ msgstr "Вы не заполнили поле \"%s\"!"
-
-# @ bwssmtp
-#~ msgid "From Email"
-#~ msgstr "От Email"
 
 # @ bwssmtp
 #~ msgid "Email address %s in the field \"%s\" is not valid!"

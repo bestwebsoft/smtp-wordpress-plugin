@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: smtp, smtp plugin, smtp mail, email, mail, mail ssl, mail tls, phpmailer, send email via smtp, mailer, test email, add smtp plugin
-Requires at least: 4.0
-Tested up to: 5.2.2
-Stable tag: 1.1.4
+Requires at least: 4.5
+Tested up to: 5.5
+Stable tag: 1.1.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -56,7 +56,7 @@ Visit our Help Center if you have any questions, our friendly Support Team is ha
 * Russian (ru_RU)
 * Ukrainian (uk)
 
-Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](https://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](https://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files [Poedit](http://www.poedit.net/download.php).
 
 = Recommended Plugins =
 
@@ -88,17 +88,21 @@ To confirm that the settings are correct, you need to send a test email first. W
 
 Please make sure that the problem hasn't been discussed yet on our forum (<https://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
-1. the link to the page where the problem occurs
-2. the name of the plugin and its version. If you are using a pro version - your order number.
-3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/)
+1. The link to the page where the problem occurs.
+2. The name of the plugin and its version. If you are using a pro version - your order number.
+3. The version of your WordPress installation.
+4. Copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/).
 
 == Screenshots ==
 
 1. Plugin settings page.
-2. Sending a test message page.
 
 == Changelog ==
+
+= V1.1.5 - 03.08.2020 =
+* Update : All functionality was updated for wordpress 5.4.2.
+* Update : The plugin settings page was changed.
+* Update : BWS panel section was updated.
 
 = V1.1.4 - 04.09.2019 =
 * Update: The deactivation feedback has been changed. Misleading buttons have been removed.
@@ -153,6 +157,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.1.5 =
+* Usability improved.
+* Plugin optimization completed.
 
 = V1.1.4 =
 * Usability improved
