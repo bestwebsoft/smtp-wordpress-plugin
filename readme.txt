@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: smtp, smtp plugin, smtp mail, email, mail, mail ssl, mail tls, phpmailer, send email via smtp, mailer, test email, add smtp plugin
 Requires at least: 4.5
-Tested up to: 5.5
-Stable tag: 1.1.5
+Tested up to: 5.8
+Stable tag: 1.1.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,6 +15,8 @@ Configure SMTP server to receive email messages from WordPress to Gmail, Yahoo, 
 Simple plugin to configure SMTP server to receive email messages from your WordPress website to Gmail, Yahoo, Hotmail, and others.
 
 Install, configure, test, and save your time!
+
+[View Demo](https://bestwebsoft.com/demo-smtp-plugin/?ref=readme)
 
 http://www.youtube.com/watch?v=KsBBg57YC-A
 
@@ -44,8 +46,8 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Documentation & Videos =
 
-* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
-* [[Doc] How to Use](https://docs.google.com/document/d/1u2QAHYmoeRMYDD8eq_8uCiKob7x86ms1lJhmQlwWEpw/)
+* [[Doc] User Guide](https://bestwebsoft.com/documentation/smtp/smtp-user-guide/)
+* [[Doc] Installation](https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/)
 
 = Help & Support =
 
@@ -68,7 +70,7 @@ Some of these translations are not complete. We are constantly adding new featur
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
 3. You can adjust the necessary settings using your WordPress admin panel in "SMTP" > "Settings".
 
-[View a Step-by-step Instruction on SMTP by BestWebSoft Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
+[View a Step-by-step Instruction on SMTP by BestWebSoft Installation](https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/)
 
 == Frequently Asked Questions ==
 
@@ -91,13 +93,17 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 1. The link to the page where the problem occurs.
 2. The name of the plugin and its version. If you are using a pro version - your order number.
 3. The version of your WordPress installation.
-4. Copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/).
+4. Copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://bestwebsoft.com/documentation/admin-panel-issues/system-status/).
 
 == Screenshots ==
 
 1. Plugin settings page.
 
 == Changelog ==
+
+= V1.1.6 - 09.08.2021 =
+* Update : All functionality was updated for wordpress 5.8.
+* Update : BWS panel section was updated.
 
 = V1.1.5 - 03.08.2020 =
 * Update : All functionality was updated for wordpress 5.4.2.
@@ -157,6 +163,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.1.6 =
+* The compatibility with new WordPress version updated.
+* Plugin optimization completed.
 
 = V1.1.5 =
 * Usability improved.

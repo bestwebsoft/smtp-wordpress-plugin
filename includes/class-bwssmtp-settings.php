@@ -34,7 +34,7 @@ if ( ! class_exists( 'Bwssmtp_Settings_Tabs' ) ) {
 				'tabs'				=> $tabs,
 				'wp_slug'			=> 'bws-smtp',
 				'link_pn'			=> '185',
-                'doc_link'          => 'https://docs.google.com/document/d/1u2QAHYmoeRMYDD8eq_8uCiKob7x86ms1lJhmQlwWEpw/'
+                'doc_link'          => 'https://bestwebsoft.com/documentation/smtp/smtp-user-guide/'
 			) );
 			add_action( get_parent_class( $this ) . '_display_second_postbox', array( $this, 'display_second_postbox' ) );
 

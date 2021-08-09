@@ -6,12 +6,12 @@ Description: Configure SMTP server to receive email messages from WordPress to G
 Author: BestWebSoft
 Text Domain: bws-smtp
 Domain Path: /languages
-Version: 1.1.5
+Version: 1.1.6
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2020  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2021  BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -183,7 +183,9 @@ if ( ! function_exists( 'bwssmtp_settings_page' ) ) {
         if ( ! class_exists( 'Bws_Settings_Tabs' ) )
             require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
         require_once( dirname( __FILE__ ) . '/includes/class-bwssmtp-settings.php' );
-        $page = new Bwssmtp_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
+        $page = new Bwssmtp_Settings_Tabs( plugin_basename( __FILE__ ) );
+	    if ( method_exists( $page,'add_request_feature' ) )
+		    $page->add_request_feature(); ?>
         <div class="wrap">
             <h1><?php _e( 'SMTP Settings', 'bws-smtp' ); ?></h1>
             <noscript>
