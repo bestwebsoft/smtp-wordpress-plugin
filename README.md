@@ -3,6 +3,7 @@
 
 <p>Simple plugin to configure SMTP server to receive email messages from your WordPress website to Gmail, Yahoo, Hotmail, and others.</p>
 <p>Install, configure, test, and save your time!</p>
+<p><a href="https://bestwebsoft.com/demo-smtp-plugin/?ref=readme" rel="nofollow ugc">View Demo</a></p>
 <p><span class="embed-youtube" style="text-align:center; display: block;"></span></p>
 <h4>Features</h4>
 <ul>
@@ -41,13 +42,11 @@
 <p>If you have a feature suggestion or idea you&#8217;d like to see in the plugin, we&#8217;d love to hear about it! <a href="https://support.bestwebsoft.com/hc/en-us/requests/new" rel="nofollow ugc">Suggest a Feature</a></p>
 <h4>Documentation &amp; Videos</h4>
 <ul>
+<li><a href="https://bestwebsoft.com/documentation/smtp/smtp-user-guide/" rel="nofollow ugc">[Doc] User Guide</a></li>
 <li><a href="https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/" rel="nofollow ugc">[Doc] Installation</a></li>
-<li><a href="https://bestwebsoft.com/documentation/smtp/smtp-user-guide/" rel="nofollow ugc">[Doc] How to Use</a></li>
 </ul>
 <h4>Help &amp; Support</h4>
 <p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help &#8211; <a href="https://support.bestwebsoft.com/" rel="nofollow ugc">https://support.bestwebsoft.com/</a></p>
-<h4>Affiliate Program</h4>
-<p>Earn 20% commission by selling the premium WordPress plugins and themes by BestWebSoft — <a href="https://bestwebsoft.com/affiliate/" rel="nofollow">https://bestwebsoft.com/affiliate/</a></p>
 <h4>Translation</h4>
 <ul>
 <li>Russian (ru_RU)</li>
