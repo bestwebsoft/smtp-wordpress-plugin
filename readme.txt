@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: smtp, smtp plugin, smtp mail, email, mail, mail ssl, mail tls, phpmailer, send email via smtp, mailer, test email, add smtp plugin
-Requires at least: 4.5
-Tested up to: 5.9
-Stable tag: 1.1.8
+Requires at least: 5.6
+Tested up to: 6.7
+Stable tag: 1.1.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,6 +57,12 @@ Visit our Help Center if you have any questions, our friendly Support Team is ha
 
 * Russian (ru_RU)
 * Ukrainian (uk)
+* Japanese (ja)
+* Portuguese (pt_PT)
+* German (de_DE)
+* French (fr_FR)
+* Spanish (es_ES)
+* Italian (it_IT)
 
 Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](https://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files [Poedit](http://www.poedit.net/download.php).
 
@@ -100,6 +106,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 1. Plugin settings page.
 
 == Changelog ==
+
+= V1.1.9 - 21.01.2025 =
+* Update : All functionality was updated for wordpress 6.7.
+* Update : BWS panel section was updated.
+* Bugfix : Bug with WP_Filesystem has been fixed.
 
 = V1.1.8 - 26.04.2022 =
 * Bugfix : Deactivation Feedback fix.
@@ -170,6 +181,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.1.9 =
+* The compatibility with new WordPress version updated.
+* Plugin optimization completed.
+* Bug fixed.
 
 = V1.1.8 =
 * Bug fixed.

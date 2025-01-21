@@ -4,7 +4,7 @@
 <p>Simple plugin to configure SMTP server to receive email messages from your WordPress website to Gmail, Yahoo, Hotmail, and others.</p>
 <p>Install, configure, test, and save your time!</p>
 <p><a href="https://bestwebsoft.com/demo-smtp-plugin/?ref=readme" rel="nofollow ugc">View Demo</a></p>
-<p><span class="embed-youtube" style="text-align:center; display: block;"></span></p>
+<p></p>
 <h4>Features</h4>
 <ul>
 <li>Send test email</li>
@@ -51,6 +51,12 @@
 <ul>
 <li>Russian (ru_RU)</li>
 <li>Ukrainian (uk)</li>
+<li>Japanese (ja)</li>
+<li>Portuguese (pt_PT)</li>
+<li>German (de_DE)</li>
+<li>French (fr_FR)</li>
+<li>Spanish (es_ES)</li>
+<li>Italian (it_IT)</li>
 </ul>
 <p>Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="https://codex.wordpress.org/Translating_WordPress" rel="nofollow ugc">the text of PO and MO files</a> to <a href="https://support.bestwebsoft.com/hc/en-us/requests/new" rel="nofollow ugc">BestWebSoft</a> and we&#8217;ll add it to the plugin. You can download the latest version of the program for work with PO and MO files <a href="http://www.poedit.net/download.php" rel="nofollow ugc">Poedit</a>.</p>
 <h4>Recommended Plugins</h4>

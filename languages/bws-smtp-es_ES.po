@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SMTP by BestWebSoft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-21 14:31+0200\n"
-"PO-Revision-Date: 2025-01-21 14:31+0200\n"
-"Last-Translator: plugin@bestwebsoft.com <plugin@bestwebsoft.com>\n"
+"POT-Creation-Date: 2025-01-21 14:35+0200\n"
+"PO-Revision-Date: 2025-01-21 14:40+0200\n"
+"Last-Translator: \n"
 "Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
-"Language: uk\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,20 +21,20 @@ msgstr ""
 #: bws-smtp.php:36 bws-smtp.php:37 bws-smtp.php:236
 #: includes/class-bwssmtp-settings.php:232
 msgid "SMTP Settings"
-msgstr "Налаштування SMTP"
+msgstr "Configuración SMTP"
 
 #: bws-smtp.php:37 bws-smtp.php:297 bws-smtp.php:317
 #: includes/class-bwssmtp-settings.php:41
 msgid "Settings"
-msgstr "Налаштування"
+msgstr "Ajustes"
 
 #: bws-smtp.php:239
 msgid "WARNING"
-msgstr "УВАГА"
+msgstr "ADVERTENCIA"
 
 #: bws-smtp.php:239
 msgid "The plugin works correctly only if JavaScript is enabled."
-msgstr "Плагін працює коректно тільки при включеному JavaScript."
+msgstr "El plugin funciona correctamente sólo si JavaScript está activado."
 
 #: bws-smtp.php:319
 msgid "FAQ"
@@ -42,32 +42,32 @@ msgstr "FAQ"
 
 #: bws-smtp.php:320
 msgid "Support"
-msgstr "Техпідтримка"
+msgstr "Soporte"
 
 #: bws-smtp.php:369
 msgid "Close notice"
-msgstr "Закрити"
+msgstr "Cerrar aviso"
 
 #: bws-smtp.php:374
 msgid ""
 "Configure the \"SMTP by BestWebSoft\" plugin for sending email messages via "
 "SMTP"
 msgstr ""
-"Налаштуйте плагін  \"SMTP by BestWebSoft\" для відправки повідомлень через "
-"SMTP"
+"Configure el plugin \"SMTP by BestWebSoft\" para enviar mensajes de correo "
+"electrónico a través de SMTP"
 
 #: bws-smtp.php:375
 msgid "Go to the settings"
-msgstr "Перейти до налаштувань"
+msgstr "Ir a la configuración"
 
 #: includes/class-bwssmtp-settings.php:42
 msgid "Misc"
-msgstr "Різне"
+msgstr "Otros"
 
 #: includes/class-bwssmtp-settings.php:87
 #, php-format
 msgid "SMTP by BestWebSoft plugin: Test email to %s"
-msgstr "Плагін SMTP by BestWebSoft: Тестовий лист для %s"
+msgstr "SMTP por BestWebSoft plugin: Prueba de correo electrónico a %s"
 
 #: includes/class-bwssmtp-settings.php:88
 #, php-format
@@ -75,35 +75,37 @@ msgid ""
 "Please do not reply. This is a test email sent via SMTP by BestWebSoft "
 "plugin from %s."
 msgstr ""
-"Будь ласка, не відповідайте на цей лист. Це тестовий лист, надісланий за "
-"допомогою плагіну SMTP by BestWebSoft від %s."
+"Por favor, no responda. Este es un correo electrónico de prueba enviado a "
+"través de SMTP por BestWebSoft plugin de %s."
 
 #: includes/class-bwssmtp-settings.php:154
 #, php-format
 msgid "It's forbidden to attach files with %s extension!"
-msgstr "Файли з розширенням %s прикріплювати заборонено!"
+msgstr "Está prohibido adjuntar archivos con extensión %s"
 
 #: includes/class-bwssmtp-settings.php:160
 #, php-format
 msgid "Successfully: A test email has been sent to %s."
-msgstr "Успішно: тестовий електронний лист надіслано на %s."
+msgstr "Con éxito: Se ha enviado un correo de prueba a %s."
 
 #: includes/class-bwssmtp-settings.php:163
 msgid "Settings Are Correct"
-msgstr "Налаштування вірні"
+msgstr "Los ajustes son correctos"
 
 #: includes/class-bwssmtp-settings.php:166
 msgid "View log"
-msgstr "Перегляд журналу"
+msgstr "Ver registro"
 
 #: includes/class-bwssmtp-settings.php:167
 msgid "A test email was not sent."
-msgstr "Тестовий лист не надісланий."
+msgstr "No se ha enviado un correo electrónico de prueba."
 
 #: includes/class-bwssmtp-settings.php:171
 msgid ""
 "You have not entered an email address which will receive your test email!"
-msgstr "Ви не вказали email для тестового листа!"
+msgstr ""
+"No ha introducido una dirección de correo electrónico que recibirá su correo "
+"de prueba"
 
 #: includes/class-bwssmtp-settings.php:192
 #: includes/class-bwssmtp-settings.php:195
@@ -112,131 +114,132 @@ msgstr "Ви не вказали email для тестового листа!"
 #: includes/class-bwssmtp-settings.php:208
 #, php-format
 msgid "You have not filled the \"%s\" field!"
-msgstr "Ви не заповнили поле \"%s\"!"
+msgstr "No ha rellenado el campo \"%s\""
 
 # @ bwssmtp
 #: includes/class-bwssmtp-settings.php:192
 #: includes/class-bwssmtp-settings.php:277
 msgid "From Email Address"
-msgstr "Поле \"Від\" (Email)"
+msgstr "Correo del remitente"
 
 # @ bwssmtp
 #: includes/class-bwssmtp-settings.php:195
 #: includes/class-bwssmtp-settings.php:285
 msgid "From Name"
-msgstr "Від Імені"
+msgstr "De Nombre"
 
 #: includes/class-bwssmtp-settings.php:200
 #: includes/class-bwssmtp-settings.php:292
 msgid "SMTP Host"
-msgstr "SMTP Хост"
+msgstr "Host SMTP"
 
 #: includes/class-bwssmtp-settings.php:205
 #: includes/class-bwssmtp-settings.php:323
 msgid "SMTP Username"
-msgstr "SMTP Ім’я користувача"
+msgstr "Nombre de usuario de SMTP"
 
 #: includes/class-bwssmtp-settings.php:208
 #: includes/class-bwssmtp-settings.php:330
 msgid "SMTP Password"
-msgstr "SMTP Пароль"
+msgstr "Contraseña SMTP"
 
 #: includes/class-bwssmtp-settings.php:215
 msgid "Settings saved."
-msgstr "Налаштування збережено."
+msgstr "Ajustes guardados."
 
 #: includes/class-bwssmtp-settings.php:217
 msgid "Settings are not saved."
-msgstr "Налаштування не збережено."
+msgstr "No se han guardado los ajustes."
 
 #: includes/class-bwssmtp-settings.php:237
 msgid "Status"
-msgstr "Статус"
+msgstr "Estado"
 
 #: includes/class-bwssmtp-settings.php:241
 msgid "Confirmed"
-msgstr "Підтверджені"
+msgstr "Confirmado"
 
 #: includes/class-bwssmtp-settings.php:243
 msgid "Not confirmed"
-msgstr "Не підтверджені"
+msgstr "No confirmado"
 
 #: includes/class-bwssmtp-settings.php:246
 msgid ""
 "To confirm the settings, please send a test email, and then click \"Settings "
 "Are Correct\" button after successful sending."
 msgstr ""
-"Щоб підтвердити налаштування, будь ласка, надішліть тестовий лист та "
-"натисніть кнопку \"Налаштування вірні\" після успішного надсилання."
+"Para confirmar la configuración, envíe un correo electrónico de prueba y "
+"haga clic en el botón \"La configuración es correcta\" después de enviarlo "
+"correctamente."
 
 #: includes/class-bwssmtp-settings.php:251
 msgid "Test Email Address"
-msgstr "Тестовий Email адрес"
+msgstr "Probar la dirección de correo electrónico"
 
 #: includes/class-bwssmtp-settings.php:256
 #, php-format
 msgid "Select a file for the test message. Max. upload file size - %s."
 msgstr ""
-"Виберіть файл для тестового повідомлення. Макс. розмір завантажуваного файлу "
-"- %s."
+"Seleccione un archivo para el mensaje de prueba. Tamaño máx. del archivo "
+"cargado - %s."
 
 #: includes/class-bwssmtp-settings.php:257
 msgid "Log"
-msgstr "Журнал"
+msgstr "Registro"
 
 #: includes/class-bwssmtp-settings.php:258
 msgid "Enable to display log."
-msgstr "Увімкнути для відображення журналу."
+msgstr "Activar para mostrar el registro."
 
 #: includes/class-bwssmtp-settings.php:259
 msgid "Send Now"
-msgstr "Надіслати зараз"
+msgstr "Enviar ahora"
 
 #: includes/class-bwssmtp-settings.php:264
 msgid "The file size exceeds the limit allowed"
-msgstr "Перевищено допустимий розмір файлу"
+msgstr "El tamaño del archivo supera el límite permitido"
 
 #: includes/class-bwssmtp-settings.php:271
 msgid "From Fields Importance"
-msgstr "Поле \"Від\""
+msgstr "De Campos Importancia"
 
 #: includes/class-bwssmtp-settings.php:273
 msgid ""
 "Enable to use the “From” field values below. Display to use settings "
 "specified in other plugins."
 msgstr ""
-"Увімкніть використання значень поля \"Від\" нижче. Відобразити, щоб "
-"використовувати налаштування, вказані в інших плагінах."
+"Habilitar para utilizar los valores del campo \"De\" indicados a "
+"continuación. Mostrar para utilizar los valores especificados en otros "
+"plugins."
 
 #: includes/class-bwssmtp-settings.php:280
 msgid "Enter an email, which will be used in the message \"From\" field."
 msgstr ""
-"Введіть email адресу, яка буде використовуватися в повідомленні в полі "
-"\"Від\"."
+"Introduzca un correo electrónico, que se utilizará en el campo \"De\" del "
+"mensaje."
 
 #: includes/class-bwssmtp-settings.php:281
 msgid ""
 "Most mail servers can change the email address in the message \"From\" field."
 msgstr ""
-"Більшість поштових серверів можуть змінювати email адресу в повідомленні в "
-"полі \"Від\"."
+"La mayoría de los servidores de correo pueden cambiar la dirección de correo "
+"electrónico en el campo \"De\" del mensaje."
 
 #: includes/class-bwssmtp-settings.php:288
 msgid "Enter the name which will be used in the message \"From\" field."
-msgstr ""
-"Введіть ім'я, яке буде використовуватися в повідомленні в полі \"Від\"."
+msgstr "Introduzca el nombre que se utilizará en el campo \"De\" del mensaje."
 
 #: includes/class-bwssmtp-settings.php:295
 msgid "Enter mail server host name or IP address."
-msgstr "Вкажіть ім’я хосту чи IP адресу поштового серверу."
+msgstr "Introduzca el nombre de host o la dirección IP del servidor de correo."
 
 #: includes/class-bwssmtp-settings.php:299
 msgid "SMTP Connection Type"
-msgstr "Тип з'єднання SMTP"
+msgstr "Tipo de conexión SMTP"
 
 #: includes/class-bwssmtp-settings.php:302
 msgid "None"
-msgstr "Відсутнє"
+msgstr "Ninguno"
 
 #: includes/class-bwssmtp-settings.php:303
 msgid "SSL"
@@ -251,46 +254,49 @@ msgid ""
 "Select the type of secure connection with the mail server. Most mail servers "
 "use SSL connection."
 msgstr ""
-"Виберіть тип безпечного з'єднання з поштовим сервером. Більшість поштових "
-"серверів використовують з'єднання SSL."
+"Seleccione el tipo de conexión segura con el servidor de correo. La mayoría "
+"de los servidores de correo utilizan conexión SSL."
 
 #: includes/class-bwssmtp-settings.php:310
 msgid "SMTP Port"
-msgstr "SMTP Порт"
+msgstr "Puerto SMTP"
 
 #: includes/class-bwssmtp-settings.php:313
 msgid "Enter the mail server port. Most mail servers use port 465."
 msgstr ""
-"Вкажіть порт поштового серверу. Більшість поштових серверів використовують "
-"465 порт."
+"Introduzca el puerto del servidor de correo. La mayoría de los servidores de "
+"correo utilizan el puerto 465."
 
 #: includes/class-bwssmtp-settings.php:317
 msgid "SMTP Authentication"
-msgstr "SMTP Аутентифікація"
+msgstr "Autenticación SMTP"
 
 #: includes/class-bwssmtp-settings.php:319
 msgid "Enable to use the SMTP Authentication."
-msgstr "Увімкнути використання автентифікації SMTP."
+msgstr "Activar para utilizar la autenticación SMTP."
 
 #: includes/class-bwssmtp-settings.php:326
 msgid "Enter the username for authentication on the mail server."
-msgstr "Введіть ім’я користувача для аутентифікаціі на поштовому сервері."
+msgstr ""
+"Introduzca el nombre de usuario para la autenticación en el servidor de "
+"correo."
 
 #: includes/class-bwssmtp-settings.php:333
 msgid "Enter the password for authentication on the mail server."
-msgstr "Введіть пароль для аутентифікаціі на поштовому сервері."
+msgstr ""
+"Introduzca la contraseña para la autenticación en el servidor de correo."
 
 #: includes/class-bwssmtp-settings.php:350
 msgid "Test Email Log"
-msgstr "Журнал тестового листа"
+msgstr "Registro de correos electrónicos de prueba"
 
 #: includes/class-bwssmtp-settings.php:353
 msgid "Sending results:"
-msgstr "Результат відправки:"
+msgstr "Enviando resultados:"
 
 #: includes/class-bwssmtp-settings.php:355
 msgid "SMTP log:"
-msgstr "Журнал SMTP:"
+msgstr "Registro SMTP:"
 
 #~ msgid "Go to log"
 #~ msgstr "Перейти до журналу"
