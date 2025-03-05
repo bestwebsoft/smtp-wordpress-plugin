@@ -92,7 +92,10 @@ if ( ! class_exists( 'Bwssmtp_Settings_Tabs' ) ) {
 						$bwssmtp_test_file_name     = sanitize_text_field( wp_unslash( $_FILES['bwssmtp_test_file_attach']['name'] ) );
 						$bwssmtp_test_file_type     = sanitize_text_field( wp_unslash( $_FILES['bwssmtp_test_file_attach']['type'] ) );
 						$bwssmtp_test_file_tmp_name = sanitize_text_field( wp_unslash( $_FILES['bwssmtp_test_file_attach']['tmp_name'] ) );
-						if ( 0 === absint( $_FILES['bwssmtp_test_file_attach']['error'] ) ) {
+						$validate_file_type = wp_check_filetype( $bwssmtp_test_file_name );
+						if ( false === $validate_file_type['type'] || false === $validate_file_type['ext'] ) {
+							$error .= __( 'File type is not allowed.', 'bws-smtp' ) . '<br />';
+						} elseif ( 0 === absint( $_FILES['bwssmtp_test_file_attach']['error'] ) ) {
 							$bwssmtp_mime_type = array(
 								'xl'    => 'application/excel',
 								'js'    => 'application/javascript',
@@ -143,20 +146,21 @@ if ( ! class_exists( 'Bwssmtp_Settings_Tabs' ) ) {
 								'xsl'   => 'text/xml',
 								'csv'   => 'text/csv',
 							);
-							if ( in_array( $bwssmtp_test_file_type, $bwssmtp_mime_type ) ) {
-								$uploads  = wp_upload_dir();
-								$new_file = $uploads['path'] . '/' . $bwssmtp_test_file_name;
-								move_uploaded_file( $bwssmtp_test_file_tmp_name, $new_file );
-								$attachment = array( $new_file );
-							} else {
+							$file_ext = explode( '.', $bwssmtp_test_file_name );
+							if ( ! in_array( $bwssmtp_test_file_type, $bwssmtp_mime_type ) || ! in_array( end( $file_ext ), array_keys( $bwssmtp_mime_type ) ) ) {
 								$file_ext = explode( '.', $bwssmtp_test_file_name );
 								$file_ext = end( $file_ext );
 								$error   .= sprintf( __( 'It\'s forbidden to attach files with %s extension!', 'bws-smtp' ), $file_ext ) . '<br />';
+							} else {
+								$uploads  = wp_upload_dir();
+								$new_file = $uploads['path'] . '/' . $bwssmtp_test_file_name;
+								move_uploaded_file( $bwssmtp_test_file_tmp_name, $new_file );
+								$attachment = array( $new_file );								
 							}
 						}
 					}
 
-					if ( wp_mail( $to, $subject, $email_message, $headers, $attachment ) ) {
+					if ( '' === $error && wp_mail( $to, $subject, $email_message, $headers, $attachment ) ) {
 						$message .= sprintf( __( 'Successfully: A test email has been sent to %s.', 'bws-smtp' ), $to ) . '<br />';
 
 						if ( 0 === absint( $this->options['confirmed'] ) ) {

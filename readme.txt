@@ -107,6 +107,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.2.0 - 05.03.2025 =
+* Bugfix : Security fixes.
+
 = V1.1.9 - 21.01.2025 =
 * Update : All functionality was updated for wordpress 6.7.
 * Update : BWS panel section was updated.
@@ -181,6 +184,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : The SMTP by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.2.0 =
+* Bugs fixed.
 
 = V1.1.9 =
 * The compatibility with new WordPress version updated.

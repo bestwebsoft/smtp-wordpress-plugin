@@ -515,7 +515,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 						( ! $this->is_multisite && isset( $bstwbsftwppdtplgns_options['custom_code'][ $file ] ) ) ) {
 						$this->custom_code_args[ "is_{$extension}_active" ] = true;
 					}
-					if ( is_writeable( $real_file ) ) {
+					if ( $wp_filesystem->is_writeable( $real_file ) ) {
 						$this->custom_code_args[ "{$extension}_writeable" ] = true;
 					}
 				} else {
